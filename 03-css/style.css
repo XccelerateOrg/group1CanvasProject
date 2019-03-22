@@ -10,7 +10,7 @@ body {
 
 #container #sideMenu {
     background-color: goldenrod;
-    padding: 0.5%;
+    padding: 10px;
     border: 1px solid #000000;
     border-radius: 20px;
     display: flex;
@@ -31,10 +31,17 @@ body {
 
 #container #sideMenu #sideMenuBtnWrapper .sideMenuBtnsRow {
     background-color: #1b9a3f;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
 
 #container #sideMenu #sideMenuBtnWrapper .sideMenuBtnsRow .sideMenuBtn {
-    
+    margin: 0px;
+    padding: 0px;
+    border: 1px solid #000000;
+    border-radius: 20px; 
 }
 
 #container #canvas {
