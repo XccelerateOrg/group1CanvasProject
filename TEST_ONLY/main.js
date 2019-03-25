@@ -86,7 +86,36 @@ $(document).ready(function () {
             }
         }
     }
-
+    //---------Kenny-------------
+    class DrawCircle {
+        constructor() {
+            this.globalStyle = new GlobalStyle();
+            this.drawing = false;
+            self = this; // for special reference to instance of DrawRectangle itself
+            this.firstPoint = [];    
+        };
+        startPosition(e) {
+            this.drawing = true;
+            ctx.fillStyle = 'black';
+            ctx.beginPath();
+            self.firstPoint[0] = e.offsetX;
+            self.firstPoint[1] = e.offsetY;
+        }
+        endPosition(e) {
+            let sqX = Math.pow(e.offsetX - self.firstPoint[0], 2);
+            let sqY = Math.pow(e.offsetY - self.firstPoint[1], 2);
+            let radius = Math.sqrt(sqX + sqY);
+            console.log(radius);
+            ctx.arc(self.firstPoint[0], self.firstPoint[1], radius, 0, 2 * Math.PI);
+            // ctx.stroke();
+            ctx.fill();
+            this.drawing = false;
+        }
+        movePosition(e) {
+            return;
+        }
+    }
+    //----------------------------
     let paint = new DrawLine();
 
     // add event handles
@@ -127,6 +156,18 @@ $(document).ready(function () {
         canvas.addEventListener('mouseup', paint.endPosition);
         console.log(paint);
     });
+    //---------Kenny-------------
+    $('#circle').click(function () {
+        canvas.removeEventListener('mousedown', paint.startPosition);
+        canvas.removeEventListener('mousemove', paint.movePosition);
+        canvas.removeEventListener('mouseup', paint.endPosition);
+        paint = new DrawCircle();
+        canvas.addEventListener('mousedown', paint.startPosition);
+        // canvas.addEventListener('mousemove', paint.movePosition);
+        canvas.addEventListener('mouseup', paint.endPosition);
+        console.log(paint);
+    });
+    //----------------------------
 
     $('#select').click(function () {
         console.log(paint);
