@@ -29,7 +29,7 @@ $(document).ready(function () {
             ctx.stroke();
         }
         movePosition(e) {
-            if (this.drawing === true) {
+            if (this.drawing === true && ctrl === true) {
                 ctx.lineTo(e.offsetX, e.offsetY);
                 
                 ctx.stroke();

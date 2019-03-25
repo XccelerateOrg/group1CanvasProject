@@ -12,8 +12,8 @@ class GlobalStyle {
         this.textBaseline = "alphabetic"    // ctx.textBaseline  = self.globalStyle.textBaseline    // "top", "middle", "bottom", "hanging", "alphabetic", "ideographic"
 
         // Fill and Stroke Style
-        this.fillColor = "#550088";         // ctx.fillStyle = self.globalStyle.fillColor     // shape inside color
-        this.lineColor = "#558888";         // ctx.strokeStyle = self.globalSytle.lineColor   // border color
+        this._fillColor = "#550088";         // ctx.fillStyle = self.globalStyle.fillColor     // shape inside color
+        this._lineColor = "#558888";         // ctx.strokeStyle = self.globalSytle.lineColor   // border color
 
         // Shodows
         this.shadowColor = "#ffffff";       // ctx.shadowColor = self.globalSyle.shadowColor
@@ -22,4 +22,18 @@ class GlobalStyle {
         this.shadowExpandY = 0;             // ctx.shadowOffsetY = self.globalStyle.shadowExpandY
 
     };
+
+    get fillColor() {
+        return this._fillColor;
+    };
+    set fillColor(value) {
+        this._fillColor = value;
+    };
+    
+    get lineColor() {
+        return this._lineColor;
+    };
+    set lineColor(value) {
+        this._lineColor = value;
+    }
 }
