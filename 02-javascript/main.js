@@ -1,24 +1,25 @@
-function chnageElementSize() {
-    let screenWidth = $(window).width();
-    let screenHeight = $(window).height() - 10;
+function chnageWindowSize() {
+    let screenWidth = $(window).innerWidth;
+    let screenHeight = $(window).innerHeight;
 
-    $('#sideMenu').css('width', Math.floor(screenWidth * 0.15));
-    $('#canvas').attr('width', Math.floor(screenWidth * 0.85));
+    let windowWidth = $(window).width() - 92;
+    let windowHeight = $(window).height() - 94;
 
-    let sideMenuRowWidth = $('#sideMenu').width();
-    console.log(sideMenuRowWidth)
-    $('.sideMenuBtn').css('width', sideMenuRowWidth * 0.45);
-    $('.sideMenuBtn').css('height', sideMenuRowWidth * 0.45);
+    //width
+    $('.feature-wrapper').css('width', Math.floor(screenWidth * 0.2));
+    $('.canvas').attr('width', Math.floor(windowWidth));
+    $('.canvas').css('left', '90px');
+    $('.style-wrapper').css('width', Math.floor(screenWidth));
 
-    let sideMenuHeight = $('#sideMenu').outerHeight();
-    $('#canvas').attr('height', sideMenuHeight);
 
-    $('#sideMenu').css('height', Math.floor(screenHeight * 0.8));
-    $('#canvas').attr('height', Math.floor(screenHeight * 0.8));
+    //height
+    $('.feature-wrapper').css('height', Math.floor(windowHeight) - 40);
+    $('.canvas').attr('height', Math.floor(windowHeight));
+    $('.style-wrapper').css('height', Math.floor(screenHeight));
+};
 
-}
+$(document).ready(function () {
+    chnageWindowSize();
+    $(window).resize(chnageWindowSize);
+});
 
-$(document).ready(function() {
-    chnageElementSize();
-    $(window).resize(chnageElementSize);
-})
