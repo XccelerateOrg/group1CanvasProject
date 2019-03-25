@@ -124,12 +124,13 @@ $(document).ready(function () {
                 self.currentPoint [0] = e.offsetX;
                 self.currentPoint [1] = e.offsetY;
                 self.curvePoint.push(self.currentPoint);
-                console.log(self.curvePoint [0] [0]+self.curvePoint [0] [1]);
                 self.count +=1;
+                console.log(curvePoint);
             }else{
             self.currentPoint [0] = e.offsetX;
             self.currentPoint [1] = e.offsetY;
             self.curvePoint.push(self.currentPoint);
+            console.log(self.curvePoint)
             this.drawing = true;
             ctx.lineWidth = self.globalStyle.lineThickness;
             ctx.lineCap = self.globalStyle.lineEndShape;
