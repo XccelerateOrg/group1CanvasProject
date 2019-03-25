@@ -6,14 +6,6 @@ $(document).ready(function () {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight * 0.8;
 
-    class GlobalStyle {
-        constructor() {
-            this.color = 'black';
-            this.lineWidth = 50;
-            this.lineStyle = "butt";
-        }
-    }
-
     class DrawLine{
         constructor() {
             this.globalStyle = new GlobalStyle();
@@ -22,17 +14,20 @@ $(document).ready(function () {
         };
         startPosition(e) {
             this.drawing = true;
-            ctx.lineWidth = self.globalStyle.lineWidth;
-            ctx.lineCap = 'round';
+            ctx.lineWidth = self.globalStyle.lineThickness;
+            ctx.lineCap = self.globalStyle.lineEndShape;
+            ctx.strokeStyle = self.globalStyle.lineColor;
             ctx.beginPath();
             ctx.moveTo(e.offsetX, e.offsetY);
         }
         endPosition(e) {
             this.drawing = false;
+            ctx.stroke();
         }
         movePosition(e) {
             if (this.drawing === true) {
                 ctx.lineTo(e.offsetX, e.offsetY);
+                
                 ctx.stroke();
             }
         }
@@ -44,13 +39,12 @@ $(document).ready(function () {
             this.drawing = false;
             this.firstPoint = [];
             this.difference = [];
-            self = this;            // for special reference to instance of DrawRectangle itself
+            self = this;
         };
         startPosition(e) {
             this.drawing = true;
             ctx.lineWidth = 10;
-            ctx.lineCap = self.globalStyle.lineStyle;
-            ctx.fillStyle = self.globalStyle.color;
+            ctx.fillStyle = self.globalStyle.fillColor;
             self.firstPoint[0] = e.offsetX;
             self.firstPoint[1] = e.offsetY;
         }
