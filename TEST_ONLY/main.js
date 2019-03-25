@@ -90,7 +90,7 @@ $(document).ready(function () {
         };
         startPosition(e) {
             this.drawing = true;
-            ctx.fillStyle = 'black';
+            ctx.fillStyle = self.globalStyle.fillColor
             ctx.beginPath();
             self.firstPoint[0] = e.offsetX;
             self.firstPoint[1] = e.offsetY;
@@ -108,6 +108,51 @@ $(document).ready(function () {
         movePosition(e) {
             return;
         }
+    }
+
+    class DrawCurve{
+        constructor() {
+            this.globalStyle = new GlobalStyle();
+            this.drawing = false;
+            self = this;
+            this.curvePoint = [];
+            this.currentPoint = [];
+            this.count = 0;
+        };
+        controlPosition(e) {
+            if (self.count < 2){
+                self.currentPoint [0] = e.offsetX;
+                self.currentPoint [1] = e.offsetY;
+                self.curvePoint.push(self.currentPoint);
+                console.log(self.curvePoint [0] [0]+self.curvePoint [0] [1]);
+                self.count +=1;
+            }else{
+            self.currentPoint [0] = e.offsetX;
+            self.currentPoint [1] = e.offsetY;
+            self.curvePoint.push(self.currentPoint);
+            this.drawing = true;
+            ctx.lineWidth = self.globalStyle.lineThickness;
+            ctx.lineCap = self.globalStyle.lineEndShape;
+            ctx.strokeStyle = self.globalStyle.lineColor;
+            ctx.beginPath();
+            ctx.moveTo(self.curvePoint [0] [0], self.curvePoint [0] [1]);
+            ctx.quadraticCurveTo(self.curvePoint [2] [0], self.curvePoint [2] [1], self.curvePoint [1] [0], self.curvePoint [1] [1]);
+            ctx.stroke();
+            self.count = 0;
+            }
+        }
+            
+        // endPosition(e) {
+        //     this.drawing = false;
+        //     ctx.stroke();
+        // }
+        // movePosition(e) {
+        //     if (this.drawing === true) {
+        //         ctx.lineTo(e.offsetX, e.offsetY);
+                
+        //         ctx.stroke();
+        //     }
+        // }
     }
     //----------------------------
     let paint = new DrawLine();
@@ -159,6 +204,17 @@ $(document).ready(function () {
         canvas.addEventListener('mousedown', paint.startPosition);
         // canvas.addEventListener('mousemove', paint.movePosition);
         canvas.addEventListener('mouseup', paint.endPosition);
+        console.log(paint);
+    });
+
+    $('#curve').click(function () {
+        canvas.removeEventListener('mousedown', paint.startPosition);
+        canvas.removeEventListener('mousemove', paint.movePosition);
+        canvas.removeEventListener('mouseup', paint.endPosition);
+        paint = new DrawCurve();
+        canvas.addEventListener('click', paint.controlPosition);
+        // canvas.addEventListener('mousemove', paint.movePosition);
+        // canvas.addEventListener('mouseup', paint.endPosition);
         console.log(paint);
     });
     //----------------------------
