@@ -5,20 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Canvas</title>
-
-    <!-- -->
-    <link rel="stylesheet" type="text/css" href="./03-css/style1.css">
-
+    <!-- awesome font cdn -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href="./03-css/style.css">
 </head>
 
 <body>
 
+    <!-- feature section -->
+    <div class="feature-wrapper">
+        <div class="feature-container">  
+            <div class="feature-overflow">              
+            <div class="feature-box">
+                <div class="feature-btn" id=""> <!-- add eventListener here -->
+                    <i class="fas fa-2x fa-slash"></i>
+                </div>
+            </div>
+
+            <div class="feature-box">
+                <div class="feature-btn" id=""> <!-- add eventListener here -->
+                    <i class="far fa-3x fa-square"></i>
+                </div>
+            </div>
+
+            <div class="feature-box">
+                <div class="feature-btn" id=""> <!-- add eventListener here -->
+                    <i class="fas fa-2x fa-slash"></i>
+                </div>
+            </div>
     
+            <div class="feature-box">
+                <div class="feature-btn" id=""> <!-- add eventListener here -->
+                    <i class="far fa-3x fa-square"></i>
+                </div>
+            </div>
+
+            <div class="feature-box">
+                <div class="feature-btn" id=""> <!-- add eventListener here -->
+                    <i class="far fa-3x fa-square"></i>
+                </div>
+            </div>
+
+            <div class="feature-box">
+                <div class="feature-btn" id=""> <!-- add eventListener here -->
+                    <i class="fas fa-2x fa-slash"></i>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- canvas section -->
+    <div class="canvas-wrapper col-12">
+        <canvas class="canvas" id="canvas-real" style="border:1px #000 solid">canvas real</canvas>
+
+        <canvas class="canvas" id="canvas-draft" style="border:1px #000 solid">canvas draft</canvas>
+    </div>
+
+    
+    <!-- style section -->
+    <div class="style-wrapper">
+        <div class="style-container">
+
+            <!-- color picker -->
+            <div class="style-box">
+                <div class="style-btn" id=""> <!-- add eventListener here -->
+                    <i class="fas fa-2x fa-circle"></i>
+                </div>
+            </div>
+
+            <div class="style-box">
+                <div class="style-btn" id=""> <!-- add eventListener here -->
+                    <i class="fas fa-2x fa-ellipsis-h"></i>
+                </div>
+            </div>
+
+            <div class="style-box">
+                <div class="style-btn" id=""> <!-- add eventListener here -->
+                    <i class="fas fa-2x fa-ellipsis-h"></i>
+                </div>
+            </div>
+                
+            <div class="style-box">
+                <div class="style-btn" id=""> <!-- add eventListener here -->
+                    <i class="fas fa-2x fa-ellipsis-h"></i>
+                </div>
+            </div>
+            
+            <div class="style-box">
+                <div class="style-btn" id=""> <!-- add eventListener here -->
+                    <i class="fas fa-2x fa-ellipsis-h"></i>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
 
     <!-- jquery -->
     <script src="./02-javascript/jquery-3.3.1.min.js"></script>
+    <!-- js script -->
+    <script src="./02-javascript/main.js"></script>
+
 </body>
 </html>
