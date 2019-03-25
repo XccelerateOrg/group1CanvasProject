@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Canvas</title>
+    <link rel="icon" alt="logo" href="./01-assets/img/paint1.png" id="logo">
+    <title>Canvas Paint - Group1</title>
     <!-- awesome font cdn -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!-- style css -->
@@ -13,43 +14,48 @@
 
 <body>
 
+    <div class="topbar">
+        <img src="./01-assets/img/paint1.png" alt="logo">
+        <h5>untitled - Paint</h5>
+    </div>
+
     <!-- feature section -->
-    <div class="feature-wrapper">
+    <div class="feature-wrapper bg-color ridge-border">
         <div class="feature-container">  
             <div class="feature-overflow">              
             <div class="feature-box">
                 <div class="feature-btn" id=""> <!-- add eventListener here -->
-                    <i class="fas fa-2x fa-slash"></i>
+                    <i class="fas fa-1x fa-slash"></i>
                 </div>
             </div>
 
             <div class="feature-box">
                 <div class="feature-btn" id=""> <!-- add eventListener here -->
-                    <i class="far fa-3x fa-square"></i>
+                    <i class="far fa-2x fa-square"></i>
                 </div>
             </div>
 
             <div class="feature-box">
                 <div class="feature-btn" id=""> <!-- add eventListener here -->
-                    <i class="fas fa-2x fa-slash"></i>
+                    <i class="fas fa-1x fa-slash"></i>
                 </div>
             </div>
     
             <div class="feature-box">
                 <div class="feature-btn" id=""> <!-- add eventListener here -->
-                    <i class="far fa-3x fa-square"></i>
+                    <i class="far fa-2x fa-square"></i>
                 </div>
             </div>
 
             <div class="feature-box">
                 <div class="feature-btn" id=""> <!-- add eventListener here -->
-                    <i class="far fa-3x fa-square"></i>
+                    <i class="far fa-2x fa-square"></i>
                 </div>
             </div>
 
             <div class="feature-box">
                 <div class="feature-btn" id=""> <!-- add eventListener here -->
-                    <i class="fas fa-2x fa-slash"></i>
+                    <i class="fas fa-1x fa-slash"></i>
                 </div>
             </div>
             </div>
@@ -58,45 +64,95 @@
     
 
     <!-- canvas section -->
-    <div class="canvas-wrapper col-12">
-        <canvas class="canvas" id="canvas-real" style="border:1px #000 solid">canvas real</canvas>
-
-        <canvas class="canvas" id="canvas-draft" style="border:1px #000 solid">canvas draft</canvas>
+    <div class="canvas-wrapper">
+        <canvas class="canvas" id="canvas-real" style="border: 2px #111 solid">canvas real</canvas>
+<!-- #dfdfdf -->
+        <canvas class="canvas" id="canvas-draft">canvas draft</canvas>
     </div>
 
     
     <!-- style section -->
-    <div class="style-wrapper">
+    <div class="style-wrapper bg-color ridge-border">
         <div class="style-container">
 
             <!-- color picker -->
-            <div class="style-box">
-                <div class="style-btn" id=""> <!-- add eventListener here -->
-                    <i class="fas fa-2x fa-circle"></i>
+            <div class="color-container">
+                <div class="color-box">
+                    <div class="current-box inset-border">
+                        <div class="current-color-a" id=""> <!-- add eventListener,change color -->
+                        </div>
+                        <div class="current-color-b" id=""> <!-- add eventListener,change color -->
+                        </div>
+                    </div>
+
+                    <div class="selected-wrapper">
+                        <div class="selected-box">
+                            <div class="selected-color" id="picker-1"> <!-- add eventListener,different colors -->
+                            </div>
+
+                            <div class="selected-color" id="picker-2"> <!-- add eventListener,different colors -->
+                            </div>
+
+                            <div class="selected-color" id="picker-3"> <!-- add eventListener,different colors -->
+                            </div>
+
+                            <div class="selected-color" id="picker-4"> <!-- add eventListener,different colors -->
+                            </div>
+
+                            <div class="selected-color" id="picker-5"> <!-- add eventListener,different colors -->
+                            </div>
+
+                            <div class="selected-color" id="picker-6"> <!-- add eventListener,different colors -->  
+                            </div>
+
+                            <div class="selected-color" id="picker-7"> <!-- add eventListener,different colors -->
+                            </div>
+
+                            <div class="selected-color" id="picker-8"> <!-- add eventListener,different colors -->
+                            </div>
+
+                            <div class="selected-color" id="picker-9"> <!-- add eventListener,different colors -->
+                            </div>
+
+                            <div class="selected-color" id="picker-10"> <!-- add eventListener,different colors -->
+                            </div>
+                            
+                            <div class="selected-color" id="picker-11"> <!-- add eventListener,different colors -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="style-box">
-                <div class="style-btn" id=""> <!-- add eventListener here -->
-                    <i class="fas fa-2x fa-ellipsis-h"></i>
+            <div class="style-section">
+                <div class="style-box">
+                    <div class="style-btn" id=""> <!-- add eventListener here -->
+                        <i class="fas fa-1x fa-circle"></i>
+                    </div>
                 </div>
-            </div>
 
-            <div class="style-box">
-                <div class="style-btn" id=""> <!-- add eventListener here -->
-                    <i class="fas fa-2x fa-ellipsis-h"></i>
+                <div class="style-box">
+                    <div class="style-btn" id=""> <!-- add eventListener here -->
+                        <i class="fas fa-1x fa-ellipsis-h"></i>
+                    </div>
                 </div>
-            </div>
+
+                <div class="style-box">
+                    <div class="style-btn" id=""> <!-- add eventListener here -->
+                        <i class="fas fa-1x fa-ellipsis-h"></i>
+                    </div>
+                </div>
+                    
+                <div class="style-box">
+                    <div class="style-btn" id=""> <!-- add eventListener here -->
+                        <i class="fas fa-1x fa-ellipsis-h"></i>
+                    </div>
+                </div>
                 
-            <div class="style-box">
-                <div class="style-btn" id=""> <!-- add eventListener here -->
-                    <i class="fas fa-2x fa-ellipsis-h"></i>
-                </div>
-            </div>
-            
-            <div class="style-box">
-                <div class="style-btn" id=""> <!-- add eventListener here -->
-                    <i class="fas fa-2x fa-ellipsis-h"></i>
+                <div class="style-box">
+                    <div class="style-btn" id=""> <!-- add eventListener here -->
+                        <i class="fas fa-1x fa-ellipsis-h"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -109,6 +165,10 @@
     <script src="./02-javascript/jquery-3.3.1.min.js"></script>
     <!-- js script -->
     <script src="./02-javascript/main.js"></script>
+    <!-- global style js !!! to be added !!! -->
 
+    <!-- below js will be deleted once merged-->
+    <script src="./TEST_ONLY/globalStyle.js"></script>
+    
 </body>
 </html>

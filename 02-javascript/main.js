@@ -1,3 +1,6 @@
+//mike
+
+//window & canvas sizes adjustment
 function chnageWindowSize() {
     let screenWidth = $(window).innerWidth;
     let screenHeight = $(window).innerHeight;
