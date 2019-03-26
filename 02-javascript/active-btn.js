@@ -22,7 +22,7 @@ function removeStyle() {
 };
 
 
-
+//style - change current color
 function clickCurrentPicker(theId){
     theId.on('click', function(){
         $('.current-color').css({"z-index" : "0"});
@@ -30,8 +30,9 @@ function clickCurrentPicker(theId){
     });
 }
 
-// function indexToZero(){
-
+// // pick this color
+// function pickThisColor(theId){
+//     theId.
 // }
 
 
