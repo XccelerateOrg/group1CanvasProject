@@ -115,30 +115,39 @@ $(document).ready(function () {
             this.globalStyle = new GlobalStyle();
             this.drawing = false;
             self = this;
-            this.curvePoint = [];
+            // this.curvePoint = [];
             this.currentPoint = [];
             this.count = 0;
         };
         controlPosition(e) {
             if (self.count < 2){
-                self.currentPoint [0] = e.offsetX;
-                self.currentPoint [1] = e.offsetY;
-                self.curvePoint.push(self.currentPoint);
+                // self.currentPoint [0] = e.offsetX;
+                // self.currentPoint [1] = e.offsetY;
+                // console.log('current'+ self.currentPoint)
+                // self.curvePoint.push(self.currentPoint);
+                // console.log('curve'+ self.curvePoint);
+                self.currentPoint.push(e.offsetX);
+                self.currentPoint.push(e.offsetY);
+                console.log(self.currentPoint);
                 self.count +=1;
-                console.log(curvePoint);
             }else{
-            self.currentPoint [0] = e.offsetX;
-            self.currentPoint [1] = e.offsetY;
-            self.curvePoint.push(self.currentPoint);
-            console.log(self.curvePoint)
+            // self.currentPoint [0] = e.offsetX;
+            // self.currentPoint [1] = e.offsetY;
+            // self.curvePoint.push(self.currentPoint);
+            // console.log(self.curvePoint);
+            self.currentPoint.push(e.offsetX);
+            self.currentPoint.push(e.offsetY);
+            console.log(self.currentPoint);
             this.drawing = true;
             ctx.lineWidth = self.globalStyle.lineThickness;
             ctx.lineCap = self.globalStyle.lineEndShape;
             ctx.strokeStyle = self.globalStyle.lineColor;
             ctx.beginPath();
-            ctx.moveTo(self.curvePoint [0] [0], self.curvePoint [0] [1]);
-            ctx.quadraticCurveTo(self.curvePoint [2] [0], self.curvePoint [2] [1], self.curvePoint [1] [0], self.curvePoint [1] [1]);
+            ctx.moveTo(self.currentPoint [0], self.currentPoint [1]);
+            ctx.quadraticCurveTo(self.currentPoint [4], self.currentPoint [5], self.currentPoint [2], self.currentPoint [3]);
             ctx.stroke();
+            self.currentPoint = [];
+            // self.curvePoint =[];
             self.count = 0;
             }
         }
@@ -153,6 +162,39 @@ $(document).ready(function () {
                 
         //         ctx.stroke();
         //     }
+        // }
+    }
+
+    class DrawText {
+        constructor() {
+            this.globalStyle = new GlobalStyle();
+            this.drawing = false;
+            self = this; // for special reference to instance of DrawRectangle itself  
+        };
+        startPosition(e) {
+            this.drawing = true;
+            ctx.fillStyle = self.globalStyle.fillColor
+            ctx.beginPath();
+            self.firstPoint[0] = e.offsetX;
+            self.firstPoint[1] = e.offsetY;
+        }
+        endPosition(e) {
+            let sqX = Math.pow(e.offsetX - self.firstPoint[0], 2);
+            let sqY = Math.pow(e.offsetY - self.firstPoint[1], 2);
+            let i = Math.sqrt(sqX + sqY);
+            let radius = i/2;
+            let startpoint =[];
+            startpoint.push(e.offsetX - self.firstPoint[0])/2
+            startpoint.push(e.offsetY - self.firstPoint[1])/2
+            console.log('array'+startpoint);
+            // console.log(radius);
+            ctx.arc(startpoint [0], startpoint [1], radius, 0, 2 * Math.PI);
+            // ctx.stroke();
+            ctx.fill();
+            this.drawing = false;
+        }
+        // movePosition(e) {
+        //     return;
         // }
     }
     //----------------------------
