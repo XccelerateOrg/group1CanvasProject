@@ -25,7 +25,7 @@ $(document).ready(function () {
 
 
 // definition of DrawLine class
-class DrawLine{
+class DrawLine {
     constructor() {
         this.drawing = false;
         self = this;
@@ -47,7 +47,7 @@ class DrawLine{
     }
     movePosition(e) {
         if (this.drawing === true && ctrlButton === true) {
-            ctxReal.lineTo(e.offsetX, e.offsetY);           
+            ctxReal.lineTo(e.offsetX, e.offsetY);
             ctxReal.stroke();
         }
     }
@@ -73,12 +73,12 @@ class DrawRectangle {
     }
     endPosition(e) {
         this.drawing = false;
-        ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);  
+        ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
         ctxReal.fillRect(self.startPoint[0], self.startPoint[1], self.difference[0], self.difference[1]);
     }
     movePosition(e) {
         if (this.drawing === true) {
-            ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);        
+            ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
             self.difference[0] = e.offsetX - self.startPoint[0];
             self.difference[1] = e.offsetY - self.startPoint[1];
             ctxDraft.fillRect(self.startPoint[0], self.startPoint[1], self.difference[0], self.difference[1]);
@@ -115,6 +115,45 @@ class DrawCircle {
     }
 }
 
+// definition of DrawStar class
+class DrawStar {
+    constructor() {
+        this.drawing = false;
+        this.pointArray = [];
+        this.countPoint = 0;
+        self = this;
+    }
+    startPosition(e) {
+        if (e.which === 1 && ctrlButton === true && self.pointArray.length != 7) {
+            let pointXY = [e.offsetX, e.offsetY];
+            self.pointArray.push(pointXY);
+            // console.log(self.pointArray[self.countPoint]);
+            self.countPoint++;
+            console.log(`countPoint ${self.countPoint}`)
+            if (self.pointArray.length > 1) {
+                let firstX = self.pointArray[self.countPoint-2][0];
+                let firstY = self.pointArray[self.countPoint-2][1];
+                console.log(`firstX ${firstX}, firstY ${firstY}`)
+                let nextX = self.pointArray[self.countPoint-1][0];
+                let nextY = self.pointArray[self.countPoint-1][1];
+                console.log(`nextX ${nextX}, nextY ${nextY}`)
+                ctxDraft.beginPath();
+                ctxDraft.moveTo(firstX, firstY);
+                ctxDraft.lineTo(nextX, nextY);
+                ctxDraft.stroke();
+            }
+            if (self.pointArray.length === 7) {
+                ctxDraft.beginPath();
+                ctxDraft.moveTo(self.pointArray[0][0], self.pointArray[0][1]);
+                ctxDraft.lineTo(self.pointArray[6][0], self.pointArray[6][1]);
+                ctxDraft.stroke();
+                self.pointArray = [];
+                self.countPoint = 0;
+            }
+        }
+    }
+}
+
 function removeHandler(canvas) {
     canvas.off('mousedown');
     canvas.off('mousemove');
@@ -139,11 +178,11 @@ let paint = undefined;
 let ctrlButton = false;
 
 
-paint = new DrawCircle();
+paint = new DrawStar();
 addHandler(canvasDraft, paint);
 
 // binding functionlity to button
-$('#freeStyle').click(function() {
+$('#freeStyle').click(function () {
     removeHandler(canvasDraft);
     paint = new DrawLine();
     addHandler(canvasDraft, paint);
@@ -151,7 +190,7 @@ $('#freeStyle').click(function() {
     console.log(paint);
 })
 
-$('#rectangle').click(function() {
+$('#rectangle').click(function () {
     removeHandler(canvasDraft);
     paint = new DrawRectangle();
     addHandler(canvasDraft, paint);
@@ -159,7 +198,7 @@ $('#rectangle').click(function() {
     console.log(paint);
 })
 
-$('#circle').click(function() {
+$('#circle').click(function () {
     removeHandler(canvasDraft);
     paint = new DrawCircle();
     addHandler(canvasDraft, paint);
@@ -167,8 +206,16 @@ $('#circle').click(function() {
     console.log(paint);
 })
 
+$('#star').click(function () {
+    removeHandler(canvasDraft);
+    paint = new DrawStar();
+    addHandler(canvasDraft, paint);
+    console.log(`star`);
+    console.log(paint);
+})
+
 // binding keybroad event
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
     switch (e.which) {
         case 17:
             ctrlButton = true;
@@ -178,7 +225,7 @@ document.addEventListener('keydown', function(e) {
             console.log(`default`);
     }
 })
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keyup', function (e) {
     switch (e.which) {
         case 17:
             ctrlButton = false;
