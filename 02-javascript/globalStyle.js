@@ -19,8 +19,7 @@ class GlobalStyle {
         this._shadowColor = "#ffffff";       // ctx.shadowColor = self.globalSyle.shadowColor
         this._shadowBlurLevel = 0;           // ctx.shadowBlur = self.globalStyle.shadowBlurLevel
         this._shadowExpandX = 0;             // ctx.shadowOffsetX = self.globalStyle.shadowExpandX
-        this._shadowExpandY = 0;             // ctx.shadowOffsetY = self.globalStyle.shadowExpandY
-
+        this._shadowExpandY = 0;             // ctx.shadowOffsetY = self.globalStyle.shadowExpand
     };
     
     // Text Style Getter and Setter
@@ -89,7 +88,7 @@ class GlobalStyle {
         this._lineColor = value;
     }
 
-    // Shodows Style
+    // Shodows Style Getter and Setter
     get shadowColor() {
         return this._shadowColor;
     }
