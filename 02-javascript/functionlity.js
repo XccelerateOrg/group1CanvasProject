@@ -8,7 +8,7 @@ class DrawFreeStyleLine {
         self = this;
     };
     startPosition(e) {
-        if (e.which === 1 && ctrlButton) {
+        if (e.which === 1 && ctrlKey) {
             console.log(e.which);
             this.drawing = true;
             ctxReal.lineWidth = globalStyle.lineThickness;
@@ -23,7 +23,7 @@ class DrawFreeStyleLine {
         ctxReal.stroke();
     }
     movePosition(e) {
-        if (this.drawing === true && ctrlButton === true) {
+        if (this.drawing === true && ctrlKey === true) {
             ctxReal.lineTo(e.offsetX, e.offsetY);
             ctxReal.stroke();
         }
@@ -95,7 +95,6 @@ class DrawRectangle {
     constructor() {
         this.drawing = false;
         this.startPoint = [];
-        this.endPoint = [];
         this.difference = [];
         self = this;
     };
@@ -157,7 +156,10 @@ class DrawCircle {
 
 class DrawStar {
     constructor() {
-
+        this.drawing = false;
+    }
+    startPosition(e) {
+        
     }
 }
 
@@ -170,28 +172,25 @@ class DrawPolygon {
         self = this;
     }
     startPosition(e) {
-        if (e.which === 1 && ctrlButton === true && self.pointArray.length != 7) {
+        if (e.which === 1 && ctrlKey === true) {
             let pointXY = [e.offsetX, e.offsetY];
             self.pointArray.push(pointXY);
-            // console.log(self.pointArray[self.countPoint]);
             self.countPoint++;
             console.log(`countPoint ${self.countPoint}`)
             if (self.pointArray.length > 1) {
                 let firstX = self.pointArray[self.countPoint-2][0];
                 let firstY = self.pointArray[self.countPoint-2][1];
-                console.log(`firstX ${firstX}, firstY ${firstY}`)
                 let nextX = self.pointArray[self.countPoint-1][0];
                 let nextY = self.pointArray[self.countPoint-1][1];
-                console.log(`nextX ${nextX}, nextY ${nextY}`)
                 ctxDraft.beginPath();
                 ctxDraft.moveTo(firstX, firstY);
                 ctxDraft.lineTo(nextX, nextY);
                 ctxDraft.stroke();
             }
-            if (self.pointArray.length === 7) {
+            if (shiftKey === true) {
                 ctxDraft.beginPath();
                 ctxDraft.moveTo(self.pointArray[0][0], self.pointArray[0][1]);
-                ctxDraft.lineTo(self.pointArray[6][0], self.pointArray[6][1]);
+                ctxDraft.lineTo(self.pointArray[self.countPoint-1][0], self.pointArray[self.countPoint-1][1]);
                 ctxDraft.stroke();
                 self.pointArray = [];
                 self.countPoint = 0;

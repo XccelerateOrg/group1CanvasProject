@@ -38,8 +38,8 @@ const canvasReal = $('#canvas-real');
 const ctxReal = canvasReal[0].getContext('2d');
 const globalStyle = new GlobalStyle();
 let paint = undefined;
-let ctrlButton = false;
-
+let ctrlKey = false;
+let shiftKey = false;
 
 paint = new DrawFreeStyleLine();
 addHandler(canvasDraft, paint);

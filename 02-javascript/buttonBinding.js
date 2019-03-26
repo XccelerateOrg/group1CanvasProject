@@ -4,8 +4,12 @@
 
 document.addEventListener('keydown', function (e) {
     switch (e.which) {
+        case 16:
+            shiftKey = true;
+            console.log(`shift = true`);
+            break;
         case 17:
-            ctrlButton = true;
+            ctrlKey = true;
             console.log(`ctrl = true`);
             break;
         default:
@@ -14,8 +18,12 @@ document.addEventListener('keydown', function (e) {
 })
 document.addEventListener('keyup', function (e) {
     switch (e.which) {
+        case 16:
+            shiftKey = false;
+            console.log(`shift = false`);
+            break;
         case 17:
-            ctrlButton = false;
+            ctrlKey = false;
             console.log(`ctrl = true`);
             break;
         default:
