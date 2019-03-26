@@ -96,18 +96,30 @@ body {
     overflow-y: scroll;
 }
 
+#f-sec2 {
+    padding-top: 20px; 
+}
+
 .feature-box {
     display: flex;
     justify-content: center;
     align-items: center;
     border: 2px solid #cfcfcf;
     border-style: outset;
-    padding: 5px 2px;
 }
 
 .feature-box:hover {
     border: 2px solid #cfcfcf;
     border-style: inset;
+}
+
+.feature-box i {
+    padding: 5px 2px;
+}
+
+.feature-box img {
+    width: 25px;
+    height: 100%;
 }
 
 
@@ -128,12 +140,23 @@ canvas {
 /* style section */
 
 .style-wrapper {
+    position: relative;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    flex-flow: row nowrap;
     border-top: 2px #dfdfdf solid;
     clear: both;
-    padding: 16px 6px;
+    padding: 0px 6px;
+}
+
+.style-overflow {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: row nowrap;
+    overflow-x: scroll;
+    width: 100%;
 }
 
 .style-container {
@@ -141,7 +164,7 @@ canvas {
     justify-content: flex-start;
     align-items: center;
     flex-flow: row nowrap;
-    overflow-y: auto;
+    margin-top: 14px;
 }
 
 /* color picker section */
@@ -188,8 +211,9 @@ canvas {
 .selected-wrapper {
     display: flex;
     flex-flow: column wrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 .selected-box {
@@ -210,6 +234,7 @@ canvas {
     border: 3px solid #cccaca;
 }
 
+/* color selection */
 #picker-1 {background-color: #000000;} /* global style */
 #picker-2 {background-color: #555555;} /* global style */
 #picker-3 {background-color: #ffffff;} /* global style */
@@ -227,17 +252,23 @@ canvas {
 /* other style sections */
 .style-section {
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-end;
     align-items: flex-start;
     flex-flow: row nowrap;
-    padding-left: 100px;
-    padding-top: 6px;
+    padding-left: 50px;
+    margin-top: 14px;
 }
 
 .style-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px #dfdfdf solid;
     padding: 0px;
+    border: 3px solid #cfcfcf;
+    border-style: ridge;
+}
+
+.style-box img {
+    width: 25px;
+    height: 100%;
 }
