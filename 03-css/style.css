@@ -56,6 +56,7 @@ body {
     width: 100%;
     height: 24px;
     background-image: linear-gradient(to right, #17007B , #030694);
+    border: 2px #dfdfdf solid;
 }
 
 .topbar img {
@@ -108,11 +109,6 @@ body {
     border-style: outset;
 }
 
-.feature-box:hover {
-    border: 2px solid #cfcfcf;
-    border-style: inset;
-}
-
 .feature-box i {
     padding: 5px 2px;
 }
@@ -124,13 +120,11 @@ body {
 
 
 /* canvas section */
-
 .canvas-wrapper {
     position: absolute;
 }
 
 /* canvas overlap */
-
 canvas {
     position: absolute;
     top: 0;
@@ -138,7 +132,6 @@ canvas {
 
 
 /* style section */
-
 .style-wrapper {
     position: relative;
     display: flex;
@@ -195,17 +188,17 @@ canvas {
 }
 
 .current-color-a {
-    top: 4px;
-    left: 4px;
+    top: 3px;
+    left: 3px;
     background-color: #E87663; /* global style !!! */
-    /* z-index, global style */
+    z-index: 1; /* default priority */ 
 }
 
 .current-color-b {
     bottom: 3px;
     right: 3px;
     background-color: #816556; /* global style !!!*/
-    /* z-index, global style */
+    z-index: 0; /* z-index, will be changed onclick */
 }
 
 .selected-wrapper {
@@ -223,16 +216,13 @@ canvas {
     align-items: center;
 }
 
-.selected-color {
+.color-btn {
     width: 30px;
     height: 30px;
     border: 3px solid #cfcfcf;
     border-style: ridge;
 }
 
-.selected-color:hover {
-    border: 3px solid #cccaca;
-}
 
 /* color selection */
 #picker-1 {background-color: #000000;} /* global style */
@@ -272,3 +262,62 @@ canvas {
     width: 25px;
     height: 100%;
 }
+
+/* -------------- */
+/* -------------- */
+
+/* hover & active btn */
+.feature-box:hover {
+    border: 2px solid #cfcfcf;
+    border-style: inset;
+}
+
+/* feature active class */
+.feature-active {
+    border: 2px solid #cfcfcf;
+    border-style: inset;
+    background-color: #d8d6d6fa;
+}
+
+.current-color-a:hover {
+    border: 1px solid #919090;
+}
+
+.current-color-b:hover {
+    border: 1px solid #919090;
+}
+
+/* selected color, set z-index once clicked */
+.higher-z-index {
+    z-index: 10;
+}
+
+.color-btn:hover {
+    border: 3px solid #919090;
+    border-style: ridge;
+}
+
+/* color active class */
+.color-active {
+    border: 3px solid #919090;
+}
+
+.style-box:hover {
+    border: 3px solid #919090;
+    border-style: ridge;
+}
+
+#default:hover {
+    border: 3px solid #ffffff;
+    border-style: ridge;
+}
+
+/* style active class */
+.style-active {
+    border: 3px solid #919090;
+    background-color: #d8d6d6fa;
+    border-style: ridge;
+}
+
+/* -------------- */
+/* -------------- */
