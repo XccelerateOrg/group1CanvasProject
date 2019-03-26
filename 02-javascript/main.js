@@ -4,7 +4,7 @@ function chnageWindowSize() {
     let screenHeight = $(window).innerHeight;
 
     let windowWidth = $(window).width() - 39;
-    let windowHeight = $(window).height() - 74;
+    let windowHeight = $(window).height() - 75;
 
     //width
     $('.feature-wrapper').css('width', Math.floor(screenWidth * 0.1));
@@ -20,8 +20,8 @@ function chnageWindowSize() {
     $('.canvas').css('top', '26px');
     $('.feature-wrapper').css('margin-top', '24px');
 
-    $('.canvas').attr('height', Math.floor(windowHeight)-25);
-    $('.style-wrapper').css('height', Math.floor(screenHeight)-50);
+    $('.canvas').attr('height', Math.floor(windowHeight) - 25);
+    $('.style-wrapper').css('height', Math.floor(screenHeight) - 50);
 };
 
 $(document).ready(function () {
