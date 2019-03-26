@@ -12,6 +12,10 @@ document.addEventListener('keydown', function (e) {
             ctrlKey = true;
             console.log(`ctrl = true`);
             break;
+        case 18:
+            altKey = true;
+            console.log(`alt = true`);
+            break;
         default:
             console.log(`default`);
     }
@@ -25,6 +29,10 @@ document.addEventListener('keyup', function (e) {
         case 17:
             ctrlKey = false;
             console.log(`ctrl = true`);
+            break;
+        case 18:
+            altKey = true;
+            console.log(`alt = false`);
             break;
         default:
             console.log(`default`);

@@ -4,7 +4,7 @@ function chnageWindowSize() {
     let screenHeight = $(window).innerHeight;
 
     let windowWidth = $(window).width() - 39;
-    let windowHeight = $(window).height() - 72;
+    let windowHeight = $(window).height() - 74;
 
     //width
     $('.feature-wrapper').css('width', Math.floor(screenWidth * 0.1));
@@ -39,6 +39,7 @@ const globalStyle = new GlobalStyle();
 let paint = undefined;
 let ctrlKey = false;
 let shiftKey = false;
+let altKey = false;
 
 paint = new DrawStar();
 addHandler(canvasDraft, paint);

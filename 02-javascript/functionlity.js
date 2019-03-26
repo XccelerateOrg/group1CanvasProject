@@ -8,7 +8,7 @@ class DrawFreeStyleLine {
         self = this;
     };
     startPosition(e) {
-        if (e.which === 1 && ctrlKey) {
+        if (e.which === 1) {
             console.log(e.which);
             this.drawing = true;
             ctxReal.lineWidth = globalStyle.lineThickness;
@@ -23,7 +23,7 @@ class DrawFreeStyleLine {
         ctxReal.stroke();
     }
     movePosition(e) {
-        if (this.drawing === true && ctrlKey === true) {
+        if (this.drawing === true) {
             ctxReal.lineTo(e.offsetX, e.offsetY);
             ctxReal.stroke();
         }
@@ -271,7 +271,7 @@ class DrawPolygon {
         ctxReal.lineJoin = globalStyle.lineJoinShape 
         ctxReal.lineWidth = globalStyle.lineThickness;
         ctxReal.fillStyle = globalStyle.fillColor;
-        if (e.which === 1 && ctrlKey === true) {
+        if (e.which === 1 && altKey === true) {
             let pointXY = [e.offsetX, e.offsetY];
             self.pointArray.push(pointXY);
             self.countPoint++;
