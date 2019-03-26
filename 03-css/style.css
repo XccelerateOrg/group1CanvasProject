@@ -176,29 +176,29 @@ canvas {
     position: relative;
     width: 32px;
     height: 32px;
+    padding: 1px;
     background-color: #d8d6d6fa;
 }
 
-.current-color-a, .current-color-b {
+.current-color {
     position: absolute;
-    width: 14px;
-    height: 14px;
+    width: 15px;
+    height: 15px;
     border: 1.5px solid #cfcfcf;
     border-style: ridge;
 }
 
-.current-color-a {
-    top: 3px;
-    left: 3px;
+#color-a {
+    top: 2px;
+    left: 2px;
     background-color: #E87663; /* global style !!! */
     z-index: 1; /* default priority */ 
 }
 
-.current-color-b {
-    bottom: 3px;
-    right: 3px;
+#color-b {
+    bottom: 2px;
+    right: 2px;
     background-color: #816556; /* global style !!!*/
-    z-index: 0; /* z-index, will be changed onclick */
 }
 
 .selected-wrapper {
@@ -279,42 +279,29 @@ canvas {
     background-color: #d8d6d6fa;
 }
 
-.current-color-a:hover {
-    border: 1px solid #919090;
-}
-
-.current-color-b:hover {
-    border: 1px solid #919090;
-}
-
 /* selected color, set z-index once clicked */
-.higher-z-index {
+.higher-zindex {
     z-index: 10;
 }
 
 .color-btn:hover {
-    border: 3px solid #919090;
+    border: 3px solid ;
     border-style: ridge;
 }
 
-/* color active class */
-.color-active {
-    border: 3px solid #919090;
-}
-
 .style-box:hover {
-    border: 3px solid #919090;
+    border: 3px solid ;
     border-style: ridge;
 }
 
 #default:hover {
-    border: 3px solid #ffffff;
+    border: 3px solid ;
     border-style: ridge;
 }
 
 /* style active class */
 .style-active {
-    border: 3px solid #919090;
+    border: 3px solid #fff;
     background-color: #d8d6d6fa;
     border-style: ridge;
 }
