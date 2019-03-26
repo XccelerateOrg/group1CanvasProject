@@ -4,7 +4,7 @@ function chnageWindowSize() {
     let screenHeight = $(window).innerHeight;
 
     let windowWidth = $(window).width() - 39;
-    let windowHeight = $(window).height() - 75;
+    let windowHeight = $(window).height() - 77;
 
     //width
     $('.feature-wrapper').css('width', Math.floor(screenWidth * 0.1));
