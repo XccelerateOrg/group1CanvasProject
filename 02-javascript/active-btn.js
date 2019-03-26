@@ -125,6 +125,11 @@ $('#f-11').on('click', function () {
     activeFeature($('#f-11'));
 });
 
+$('#f-12').on('click', function () {
+    removeFeature();
+    activeFeature($('#f-12'));
+});
+
 
 // --------------
 
