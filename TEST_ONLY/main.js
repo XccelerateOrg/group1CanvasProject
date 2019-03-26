@@ -5,6 +5,7 @@ $(document).ready(function () {
     // Resizing
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight * 0.8;
+    
 
     class DrawLine{
         constructor() {
@@ -13,19 +14,22 @@ $(document).ready(function () {
             self = this;
         };
         startPosition(e) {
-            this.drawing = true;
-            ctx.lineWidth = self.globalStyle.lineThickness;
-            ctx.lineCap = self.globalStyle.lineEndShape;
-            ctx.strokeStyle = self.globalStyle.lineColor;
-            ctx.beginPath();
-            ctx.moveTo(e.offsetX, e.offsetY);
+            if (e.which === 1 && ctrl) {
+                console.log(e.which);
+                this.drawing = true;
+                ctx.lineWidth = self.globalStyle.lineThickness;
+                ctx.lineCap = self.globalStyle.lineEndShape;
+                ctx.strokeStyle = self.globalStyle.lineColor;
+                ctx.beginPath();
+                ctx.moveTo(e.offsetX, e.offsetY);
+            }
         }
         endPosition(e) {
             this.drawing = false;
             ctx.stroke();
         }
         movePosition(e) {
-            if (this.drawing === true) {
+            if (this.drawing === true && ctrl === true) {
                 ctx.lineTo(e.offsetX, e.offsetY);
                 
                 ctx.stroke();
@@ -199,11 +203,26 @@ $(document).ready(function () {
     }
     //----------------------------
     let paint = new DrawLine();
+    let ctrl = false;
+
 
     // add event handles
     canvas.addEventListener('mousedown', paint.startPosition);
     canvas.addEventListener('mousemove', paint.movePosition);
     canvas.addEventListener('mouseup', paint.endPosition);
+    document.addEventListener('keydown', function(e) {
+        if (e.which === 17) {
+            ctrl = true;
+            console.log(`ctrl = true`);
+        }
+    })
+    document.addEventListener('keyup', function(e) {
+        if (e.which === 17) {
+            ctrl = false;
+            console.log(`ctrl = false`);
+        }
+    })
+
 
     // binding functionilty to each button
     $('#freeStyle').click(function () {
@@ -221,6 +240,7 @@ $(document).ready(function () {
         canvas.removeEventListener('mousedown', paint.startPosition);
         canvas.removeEventListener('mousemove', paint.movePosition);
         canvas.removeEventListener('mouseup', paint.endPosition);
+        canvas.removeEventListener('dbclick', paint.endPosition);
         paint = new DrawRectangle();
         canvas.addEventListener('mousedown', paint.startPosition);
         canvas.addEventListener('mousemove', paint.movePosition);
