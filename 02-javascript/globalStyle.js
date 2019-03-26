@@ -89,7 +89,7 @@ class GlobalStyle {
         this._lineColor = value;
     }
 
-    // Shodows Style
+    // Shodows Style Getter and Setter
     get shadowColor() {
         return this._shadowColor;
     }
