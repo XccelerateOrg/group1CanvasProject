@@ -41,5 +41,5 @@ let paint = undefined;
 let ctrlKey = false;
 let shiftKey = false;
 
-paint = new DrawFreeStyleLine();
+paint = new DrawStar();
 addHandler(canvasDraft, paint);

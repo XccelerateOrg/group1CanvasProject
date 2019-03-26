@@ -157,9 +157,98 @@ class DrawCircle {
 class DrawStar {
     constructor() {
         this.drawing = false;
+        this.topLeft = {x1: null, y1: null};
+        this.btmRight = {x2: null, y2: null};
+        this.widthX = null;
+        this.heightY = null;
+        this.point1 = [];
+        this.point2 = [];
+        this.point3 = [];
+        this.point4 = [];
+        this.point5 = [];
+        this.point6 = [];
+        this.point7 = [];
+        this.point8 = [];
+        this.point9 = [];
+        this.point10 = [];
+        self = this;
+
     }
     startPosition(e) {
-        
+        this.drawing = true;
+        self.topLeft.x1 = e.offsetX;
+        self.topLeft.y1 = e.offsetY;
+        ctxDraft.strokeStyle = globalStyle.lineColor;
+        ctxDraft.lineCap = globalStyle.lineEndShape;
+        ctxDraft.lineJoin = globalStyle.lineJoinShape;
+        ctxDraft.lineWidth = globalStyle.lineThickness;
+        ctxDraft.fillStyle = globalStyle.fillColor;
+        ctxReal.strokeStyle = globalStyle.lineColor;
+        ctxReal.lineCap = globalStyle.lineEndShape;
+        ctxReal.lineJoin = globalStyle.lineJoinShape 
+        ctxReal.lineWidth = globalStyle.lineThickness;
+        ctxReal.fillStyle = globalStyle.fillColor;
+
+    }
+    endPosition(e) {
+        this.drawing = false;
+        ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
+        ctxReal.moveTo(self.point1[0], self.point1[1]);
+        ctxReal.lineTo(self.point2[0], self.point2[1]);
+        ctxReal.lineTo(self.point3[0], self.point3[1]);
+        ctxReal.lineTo(self.point4[0], self.point4[1]);
+        ctxReal.lineTo(self.point5[0], self.point5[1]);
+        ctxReal.lineTo(self.point6[0], self.point6[1]);
+        ctxReal.lineTo(self.point7[0], self.point7[1]);
+        ctxReal.lineTo(self.point8[0], self.point8[1]);
+        ctxReal.lineTo(self.point9[0], self.point9[1]);
+        ctxReal.lineTo(self.point10[0],self. point10[1]);
+        ctxReal.closePath();
+        ctxReal.fill();
+        // ctxReal.stroke();
+    }
+    movePosition(e) {
+        if(this.drawing === true) {
+            ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
+            self.btmRight.x2 = e.offsetX;
+            self.btmRight.y2 = e.offsetY;
+            self.widthX = self.btmRight.x2 - self.topLeft.x1;
+            self.heightY = self.btmRight.y2 - self.topLeft.y1
+            self.point1[0] = self.topLeft.x1 + (self.widthX * (1 / 2));
+            self.point1[1] = self.topLeft.y1;
+            self.point2[0] = self.topLeft.x1 + (self.widthX * (1 / 3));
+            self.point2[1] = self.topLeft.y1 + (self.heightY * (1 / 3));
+            self.point3[0] = self.topLeft.x1;
+            self.point3[1] = self.topLeft.y1 + (self.heightY * (1 / 3));
+            self.point4[0] = self.topLeft.x1 + (self.widthX * (2 / 7));
+            self.point4[1] = self.topLeft.y1 + (self.heightY * (2 / 3));
+            self.point5[0] = self.topLeft.x1 + (self.widthX * (1 / 7));
+            self.point5[1] = self.topLeft.y1 + self.heightY;
+            self.point6[0] = self.topLeft.x1 + (self.widthX * (1 / 2));
+            self.point6[1] = self.topLeft.y1 + (self.heightY * (4 / 5));
+            self.point7[0] = self.topLeft.x1 + (self.widthX * (6 / 7));
+            self.point7[1] = self.topLeft.y1 + self.heightY;
+            self.point8[0] = self.topLeft.x1 + (self.widthX * (5 / 7));
+            self.point8[1] = self.topLeft.y1 + (self.heightY * (2 / 3));
+            self.point9[0] = self.topLeft.x1 + self.widthX;
+            self.point9[1] = self.topLeft.y1 + (self.heightY * (1 / 3));
+            self.point10[0] = self.topLeft.x1 + (self.widthX * (2 / 3));
+            self.point10[1] = self.topLeft.y1 + (self.heightY * (1 / 3));
+            ctxDraft.beginPath();
+            ctxDraft.moveTo(self.point1[0], self.point1[1]);
+            ctxDraft.lineTo(self.point2[0], self.point2[1]);
+            ctxDraft.lineTo(self.point3[0], self.point3[1]);
+            ctxDraft.lineTo(self.point4[0], self.point4[1]);
+            ctxDraft.lineTo(self.point5[0], self.point5[1]);
+            ctxDraft.lineTo(self.point6[0], self.point6[1]);
+            ctxDraft.lineTo(self.point7[0], self.point7[1]);
+            ctxDraft.lineTo(self.point8[0], self.point8[1]);
+            ctxDraft.lineTo(self.point9[0], self.point9[1]);
+            ctxDraft.lineTo(self.point10[0],self.point10[1]);
+            ctxDraft.closePath();
+            ctxDraft.fill();
+            ctxDraft.strokeRect(self.topLeft.x1, self.topLeft.y1, self.widthX, self.heightY);
+        }
     }
 }
 
@@ -172,6 +261,16 @@ class DrawPolygon {
         self = this;
     }
     startPosition(e) {
+        ctxDraft.strokeStyle = globalStyle.lineColor;
+        ctxDraft.lineCap = globalStyle.lineEndShape;
+        ctxDraft.lineJoin = globalStyle.lineJoinShape;
+        ctxDraft.lineWidth = globalStyle.lineThickness;
+        ctxDraft.fillStyle = globalStyle.fillColor;
+        ctxReal.strokeStyle = globalStyle.lineColor;
+        ctxReal.lineCap = globalStyle.lineEndShape;
+        ctxReal.lineJoin = globalStyle.lineJoinShape 
+        ctxReal.lineWidth = globalStyle.lineThickness;
+        ctxReal.fillStyle = globalStyle.fillColor;
         if (e.which === 1 && ctrlKey === true) {
             let pointXY = [e.offsetX, e.offsetY];
             self.pointArray.push(pointXY);
@@ -182,16 +281,16 @@ class DrawPolygon {
                 let firstY = self.pointArray[self.countPoint-2][1];
                 let nextX = self.pointArray[self.countPoint-1][0];
                 let nextY = self.pointArray[self.countPoint-1][1];
-                ctxDraft.beginPath();
-                ctxDraft.moveTo(firstX, firstY);
-                ctxDraft.lineTo(nextX, nextY);
-                ctxDraft.stroke();
+                ctxReal.beginPath();
+                ctxReal.moveTo(firstX, firstY);
+                ctxReal.lineTo(nextX, nextY);
+                ctxReal.stroke();
             }
             if (shiftKey === true) {
-                ctxDraft.beginPath();
-                ctxDraft.moveTo(self.pointArray[0][0], self.pointArray[0][1]);
-                ctxDraft.lineTo(self.pointArray[self.countPoint-1][0], self.pointArray[self.countPoint-1][1]);
-                ctxDraft.stroke();
+                ctxReal.beginPath();
+                ctxReal.moveTo(self.pointArray[0][0], self.pointArray[0][1]);
+                ctxReal.lineTo(self.pointArray[self.countPoint-1][0], self.pointArray[self.countPoint-1][1]);
+                ctxReal.stroke();
                 self.pointArray = [];
                 self.countPoint = 0;
             }
