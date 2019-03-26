@@ -7,9 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" alt="logo" href="./01-assets/img/paint1.png" id="logo">
     <title>Canvas Paint - Group1</title>
-    <!-- awesome font cdn -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!-- style css -->
     <link rel="stylesheet" type="text/css" href="./03-css/style.css">
 </head>
@@ -27,56 +24,56 @@
 
                 <!-- feature section 1 -->
                 <div class="feature-section" id="f-sec1">
-                    <div class="feature-box">
+                    <div class="feature-box" id="f-1">  <!-- id for active btn -->
                         <div class="feature-btn" id="freeStyle">
                             <!-- add eventListener here -->
                             <img src="./01-assets/img/pen2.png" alt="drawing tool">
                         </div>
                     </div>
 
-                    <div class="feature-box">
+                    <div class="feature-box" id="f-2">  <!-- id for active btn -->
                         <div class="feature-btn" id="rectangle">
                             <!-- add eventListener here -->
                             <img src="./01-assets/img/eraser.png" alt="drawing tool">
                         </div>
                     </div>
 
-                    <div class="feature-box">
+                    <div class="feature-box" id="f-3">  <!-- id for active btn -->
                         <div class="feature-btn" id="circle">
                             <!-- add eventListener here -->
                             <img src="./01-assets/img/slash2.png" alt="drawing tool">
                         </div>
                     </div>
 
-                    <div class="feature-box">
+                    <div class="feature-box" id="f-4">  <!-- id for active btn -->
                         <div class="feature-btn" id="star">
                             <!-- add eventListener here -->
                             <img src="./01-assets/img/curve1.png" alt="drawing tool">
                         </div>
                     </div>
 
-                    <div class="feature-box">
+                    <div class="feature-box" id="f-5">  <!-- id for active btn -->
                         <div class="feature-btn" id="">
                             <!-- add eventListener here -->
                             <img src="./01-assets/img/rect2.png" alt="drawing tool">
                         </div>
                     </div>
 
-                    <div class="feature-box">
+                    <div class="feature-box" id="f-6">  <!-- id for active btn -->
                         <div class="feature-btn" id="">
                             <!-- add eventListener here -->
                             <img src="./01-assets/img/circle3.png" alt="drawing tool">
                         </div>
                     </div>
 
-                    <div class="feature-box">
+                    <div class="feature-box" id="f-7">  <!-- id for active btn -->
                         <div class="feature-btn" id="">
                             <!-- add eventListener here -->
                             <img src="./01-assets/img/star.png" alt="drawing tool">
                         </div>
                     </div>
 
-                    <div class="feature-box">
+                    <div class="feature-box" id="f-8">  <!-- id for active btn -->
                         <div class="feature-btn" id="">
                             <!-- add eventListener here -->
                             <img src="./01-assets/img/hexagon.png" alt="drawing tool">
@@ -88,21 +85,21 @@
 
                 <!-- feature section 2 -->
                 <div class="feature-section" id="f-sec2">
-                    <div class="feature-box">
+                    <div class="feature-box"  id="f-9">
                         <div class="feature-btn" id="">
                             <!-- add eventListener here -->
                             <img src="./01-assets/img/emoji3.png" alt="emoji icon">
                         </div>
                     </div>
 
-                    <div class="feature-box">
+                    <div class="feature-box"  id="f-10">
                         <div class="feature-btn" id="">
                             <!-- add eventListener here -->
                             <img src="./01-assets/img/emoji4.png" alt="emoji icon">
                         </div>
                     </div>
 
-                    <div class="feature-box">
+                    <div class="feature-box"  id="f-11">
                         <div class="feature-btn" id="">
                             <!-- add eventListener here -->
                             <img src="./01-assets/img/slack.png" alt="emoji icon">
@@ -119,7 +116,7 @@
         <canvas class="canvas" id="canvas-real" style="border: 2px #dfdfdf solid; border-style: ridge;">canvas
             real</canvas>
         <!-- #dfdfdf -->
-        <canvas class="canvas" id="canvas-draft">canvas draft</canvas>
+        <canvas class="canvas" id="canvas-draft" style="border: 2px #dfdfdf solid; border-style: ridge;">canvas draft</canvas>
     </div>
 
 
@@ -132,57 +129,57 @@
                 <div class="color-container">
                     <div class="color-box">
                         <div class="current-box inset-border">
-                            <div class="current-color-a" id="">
+                            <div class="current-color" id="color-a">
                                 <!-- add eventListener,change color -->
                             </div>
-                            <div class="current-color-b" id="">
+                            <div class="current-color" id="color-b">
                                 <!-- add eventListener,change color -->
                             </div>
                         </div>
 
                         <div class="selected-wrapper">
                             <div class="selected-box">
-                                <div class="selected-color" id="picker-1">
+                                <div class="color-btn" id="picker-1">
                                     <!-- add eventListener,different colors -->
                                 </div>
 
-                                <div class="selected-color" id="picker-2">
+                                <div class="color-btn" id="picker-2">
                                     <!-- add eventListener,different colors -->
                                 </div>
 
-                                <div class="selected-color" id="picker-3">
+                                <div class="color-btn" id="picker-3">
                                     <!-- add eventListener,different colors -->
                                 </div>
 
-                                <div class="selected-color" id="picker-4">
+                                <div class="color-btn" id="picker-4">
                                     <!-- add eventListener,different colors -->
                                 </div>
 
-                                <div class="selected-color" id="picker-5">
+                                <div class="color-btn" id="picker-5">
                                     <!-- add eventListener,different colors -->
                                 </div>
 
-                                <div class="selected-color" id="picker-6">
+                                <div class="color-btn" id="picker-6">
                                     <!-- add eventListener,different colors -->
                                 </div>
 
-                                <div class="selected-color" id="picker-7">
+                                <div class="color-btn" id="picker-7">
                                     <!-- add eventListener,different colors -->
                                 </div>
 
-                                <div class="selected-color" id="picker-8">
+                                <div class="color-btn" id="picker-8">
                                     <!-- add eventListener,different colors -->
                                 </div>
 
-                                <div class="selected-color" id="picker-9">
+                                <div class="color-btn" id="picker-9">
                                     <!-- add eventListener,different colors -->
                                 </div>
 
-                                <div class="selected-color" id="picker-10">
+                                <div class="color-btn" id="picker-10">
                                     <!-- add eventListener,different colors -->
                                 </div>
 
-                                <div class="selected-color" id="picker-11">
+                                <div class="color-btn" id="picker-11">
                                     <!-- add eventListener,different colors -->
                                 </div>
                             </div>
@@ -192,31 +189,45 @@
             </div>
 
             <div class="style-section">
-                <div class="style-box">
+                <div class="style-box" id="s-1">
                     <div class="style-btn" id="">
                         <!-- add eventListener here -->
                         <img src="./01-assets/img/dots.png" alt="style icon">
                     </div>
                 </div>
 
-                <div class="style-box">
+                <div class="style-box" id="s-2">
                     <div class="style-btn" id="">
                         <!-- add eventListener here -->
-                        <img src="./01-assets/img/stroke-weight.png" alt="style icon">
+                        <img src="./01-assets/img/stroke-weight2.png" alt="style icon">
                     </div>
                 </div>
 
-                <div class="style-box">
+                <div class="style-box" id="s-3">
                     <div class="style-btn" id="">
                         <!-- add eventListener here -->
-                        <img src="./01-assets/img/text.png" alt="style icon">
+                        <img src="./01-assets/img/opacity1.png" alt="style icon">
                     </div>
                 </div>
 
-                <div class="style-box">
+                <div class="style-box" id="s-4">
+                    <div class="style-btn" id="">
+                        <!-- add eventListener here -->
+                        <img src="./01-assets/img/font-size1.png" alt="style icon">
+                    </div>
+                </div>
+
+                <div class="style-box" id="s-5">
                     <div class="style-btn" id="">
                         <!-- add eventListener here -->
                         <img src="./01-assets/img/align1.png" alt="style icon">
+                    </div>
+                </div>
+
+                <div class="style-box" id="default">
+                    <div class="style-btn" id="">
+                        <!-- add eventListener here -->
+                        <img src="./01-assets/img/default.png" alt="style icon">
                     </div>
                 </div>
             </div>
@@ -232,6 +243,8 @@
     <script src="./02-javascript/globalStyle.js"></script>
     <!-- js script -->
     <script src="./02-javascript/main.js"></script>
+    
+    <script src="./02-javascript/active-btn.js"></script>
     <!-- global style js !!! to be added !!! -->
 
     <!-- below js will be deleted once merged-->
