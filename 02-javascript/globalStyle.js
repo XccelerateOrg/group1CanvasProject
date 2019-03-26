@@ -2,7 +2,7 @@ class GlobalStyle {
     constructor() {
         // Line Style
         this._lineThickness = 10;            // ctx.lineWidth = self.globalStyle.lineThickness   // the thickness of lines
-        this._lineEndShape = "round";        // ctx.lineCap = self.globalSrtle.lineEndShape      // the shape of ending point on the line "round圓角" "butt短方角" "square長方角"
+        this._lineEndShape = "round";        // ctx.lineCap = self.globalStyle.lineEndShape      // the shape of ending point on the line "round圓角" "butt短方角" "square長方角"
         this._lineJoinShape = "round";       // ctx.lineJoin = self.globalStyle.lineJoinShape    // the shape used to join to line "round圓角" "miter尖角" "bevel平角"
         
         // Text Style
