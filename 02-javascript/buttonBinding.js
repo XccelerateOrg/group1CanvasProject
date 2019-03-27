@@ -125,6 +125,7 @@ $('#textBox').click(function () {
 })
 
 $('#eraser').click(function () {
+    clearDraft();
     removeHandler(canvasDraft);
     paint = new Eraser();
     addHandler(canvasDraft, paint);
