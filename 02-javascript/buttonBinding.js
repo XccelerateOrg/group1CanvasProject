@@ -51,6 +51,7 @@ function removeHandler(canvas) {
 
 function addHandler(canvas, paint) {
     canvas.on('mousedown', paint.startPosition);
+    canvas.on('mousedown', paint.controlPosition);
     canvas.on('mousemove', paint.movePosition);
     canvas.on('mouseup', paint.endPosition);
 }

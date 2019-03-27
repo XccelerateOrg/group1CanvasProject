@@ -1,7 +1,7 @@
 class GlobalStyle {
     constructor() {
         // Line Style
-        this._lineThickness = 10;            // ctx.lineWidth = self.globalStyle.lineThickness   // the thickness of lines
+        this._lineThickness = 20;            // ctx.lineWidth = self.globalStyle.lineThickness   // the thickness of lines
         this._lineEndShape = "round";        // ctx.lineCap = self.globalStyle.lineEndShape      // the shape of ending point on the line "round圓角" "butt短方角" "square長方角"
         this._lineJoinShape = "round";       // ctx.lineJoin = self.globalStyle.lineJoinShape    // the shape used to join to line "round圓角" "miter尖角" "bevel平角"
         
@@ -17,9 +17,9 @@ class GlobalStyle {
 
         // Shodows Style
         this._shadowColor = "#ffffff";       // ctx.shadowColor = self.globalSyle.shadowColor
-        this._shadowBlurLevel = 0;           // ctx.shadowBlur = self.globalStyle.shadowBlurLevel
-        this._shadowExpandX = 0;             // ctx.shadowOffsetX = self.globalStyle.shadowExpandX
-        this._shadowExpandY = 0;             // ctx.shadowOffsetY = self.globalStyle.shadowExpand
+        this._shadowBlurLevel = 10;           // ctx.shadowBlur = self.globalStyle.shadowBlurLevel
+        this._shadowExpandX = 10;             // ctx.shadowOffsetX = self.globalStyle.shadowExpandX
+        this._shadowExpandY = 10;             // ctx.shadowOffsetY = self.globalStyle.shadowExpand
     };
     
     // Text Style Getter and Setter

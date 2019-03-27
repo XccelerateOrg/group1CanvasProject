@@ -1,22 +1,19 @@
 //////////////////////////////////
 // definition of DrawLine class //
 //////////////////////////////////
-
 class DrawFreeStyleLine {
     constructor() {
         this.drawing = false;
         self = this;
     };
     startPosition(e) {
-        if (e.which === 1) {
-            console.log(e.which);
-            this.drawing = true;
-            ctxReal.lineWidth = globalStyle.lineThickness;
-            ctxReal.lineCap = globalStyle.lineEndShape;
-            ctxReal.strokeStyle = globalStyle.lineColor;
-            ctxReal.beginPath();
-            ctxReal.moveTo(e.offsetX, e.offsetY);
-        }
+        console.log(e.which);
+        this.drawing = true;
+        ctxReal.lineWidth = globalStyle.lineThickness;
+        ctxReal.lineCap = globalStyle.lineEndShape;
+        ctxReal.strokeStyle = globalStyle.lineColor;
+        ctxReal.beginPath();
+        ctxReal.moveTo(e.offsetX, e.offsetY);
     }
     endPosition(e) {
         this.drawing = false;
@@ -33,64 +30,103 @@ class DrawFreeStyleLine {
 //////////////////////////////////////
 // definition DrawStrightLine class //
 //////////////////////////////////////
-
 class DrawStrightLine {
     constructor() {
+        this.drawing = false;
+        this.startPoint = [];
+        self = this;
+    }
+    startPosition(e) {
+        this.drawing = true;
+        ctxDraft.lineWidth = globalStyle.lineThickness
+        ctxDraft.lineCap = globalStyle.lineEndShape
+        ctxDraft.strokeStyle = globalStyle.lineColor
+        ctxReal.lineWidth = globalStyle.lineThickness
+        ctxReal.lineCap = globalStyle.lineEndShape
+        ctxReal.strokeStyle = globalStyle.lineColor
+        self.startPoint[0] = e.offsetX;
+        self.startPoint[1] = e.offsetY;
+    }
+    endPosition(e) {
+        this.drawing = false;
+        ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
+        ctxReal.beginPath();
+        ctxReal.moveTo(self.startPoint[0], self.startPoint[1]);
+        ctxReal.lineTo(e.offsetX, e.offsetY);
+        ctxReal.stroke();
 
+    }
+    movePosition(e) {
+        if (this.drawing === true) {
+            ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
+            ctxDraft.beginPath();
+            ctxDraft.moveTo(self.startPoint[0], self.startPoint[1]);
+            ctxDraft.lineTo(e.offsetX, e.offsetY);
+            ctxDraft.stroke();
+        }
     }
 }
 
 ////////////////////////////////
 // definition DrawCurve class //
 ////////////////////////////////
-
 class DrawCurve {
     constructor() {
-        this.globalStyle = new GlobalStyle();
         this.drawing = false;
+        this.startPoint = [];
+        this.endPoint = [];
+        this.ctrlPoint = [];
         self = this;
-        // this.curvePoint = [];
-        this.currentPoint = [];
-        this.count = 0;
-    };
-    controlPosition(e) {
-        if (self.count < 2){
-            // self.currentPoint [0] = e.offsetX;
-            // self.currentPoint [1] = e.offsetY;
-            // console.log('current'+ self.currentPoint)
-            // self.curvePoint.push(self.currentPoint);
-            // console.log('curve'+ self.curvePoint);
-            self.currentPoint.push(e.offsetX);
-            self.currentPoint.push(e.offsetY);
-            console.log(self.currentPoint);
-            self.count +=1;
-        }else{
-        // self.currentPoint [0] = e.offsetX;
-        // self.currentPoint [1] = e.offsetY;
-        // self.curvePoint.push(self.currentPoint);
-        // console.log(self.curvePoint);
-        self.currentPoint.push(e.offsetX);
-        self.currentPoint.push(e.offsetY);
-        console.log(self.currentPoint);
-        this.drawing = true;
-        ctx.lineWidth = self.globalStyle.lineThickness;
-        ctx.lineCap = self.globalStyle.lineEndShape;
-        ctx.strokeStyle = self.globalStyle.lineColor;
-        ctx.beginPath();
-        ctx.moveTo(self.currentPoint [0], self.currentPoint [1]);
-        ctx.quadraticCurveTo(self.currentPoint [4], self.currentPoint [5], self.currentPoint [2], self.currentPoint [3]);
-        ctx.stroke();
-        self.currentPoint = [];
-        // self.curvePoint =[];
-        self.count = 0;
+    }
+    startPosition(e) {
+        if (self.startPoint.length === 0) {
+            ctxDraft.lineWidth = globalStyle.lineThickness
+            ctxDraft.lineCap = globalStyle.lineEndShape
+            ctxDraft.strokeStyle = globalStyle.lineColor
+            ctxReal.lineWidth = globalStyle.lineThickness
+            ctxReal.lineCap = globalStyle.lineEndShape
+            ctxReal.strokeStyle = globalStyle.lineColor
+            self.startPoint[0] = e.offsetX;
+            self.startPoint[1] = e.offsetY;
+            console.log(`startPointX ${self.startPoint[0]} startPointY ${self.startPoint[1]}`);
+        }
+        else if (self.endPoint.length === 0) {
+            self.endPoint[0] = e.offsetX;
+            self.endPoint[1] = e.offsetY;
+            console.log(`endPointX ${self.endPoint[0]} endPointY ${self.endPoint[1]}`);
+        }
+        else {
+            this.drawing = true;
         }
     }
+    endPosition(e) {
+        if (self.startPoint.length !== 0 && self.endPoint.length !== 0 && this.drawing === true) {
+            ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
+            ctxReal.beginPath();
+            ctxReal.moveTo(self.startPoint[0], self.startPoint[1]);
+            ctxReal.quadraticCurveTo(e.offsetX, e.offsetY, self.endPoint[0], self.endPoint[1]);
+            ctxReal.stroke();
+            self.startPoint = [];
+            self.endPoint = [];
+            self.ctrlPoint = [];
+            this.drawing = false;
+        }
+    }
+    movePosition(e) {
+        if (self.startPoint.length !== 0 && self.endPoint.length !== 0) {
+            ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
+            ctxDraft.beginPath();
+            ctxDraft.moveTo(self.startPoint[0], self.startPoint[1]);
+            ctxDraft.quadraticCurveTo(e.offsetX, e.offsetY, self.endPoint[0], self.endPoint[1]);
+            ctxDraft.stroke();
+        }
+    }
+
 }
 
 ///////////////////////////////////////
 // definition of DrawRectangle class //
 ///////////////////////////////////////
-
 class DrawRectangle {
     constructor() {
         this.drawing = false;
@@ -102,14 +138,21 @@ class DrawRectangle {
         this.drawing = true;
         ctxReal.lineWidth = globalStyle.lineThickness;
         ctxReal.fillStyle = globalStyle.fillColor;
+        ctxReal.strokeStyle = globalStyle.lineColor;
+        ctxReal.lineCap = globalStyle.lineEndShape;
+        ctxReal.lineJoin = globalStyle.lineJoinShape;
         ctxDraft.lineWidth = globalStyle.lineThickness;
         ctxDraft.fillStyle = globalStyle.fillColor;
+        ctxDraft.strokeStyle = globalStyle.lineColor;
+        ctxDraft.lineCap = globalStyle.lineEndShape;
+        ctxDraft.lineJoin = globalStyle.lineJoinShape;
         self.startPoint[0] = e.offsetX;
         self.startPoint[1] = e.offsetY;
     }
     endPosition(e) {
         this.drawing = false;
         ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
+        ctxReal.strokeRect(self.startPoint[0], self.startPoint[1], self.difference[0], self.difference[1]);
         ctxReal.fillRect(self.startPoint[0], self.startPoint[1], self.difference[0], self.difference[1]);
     }
     movePosition(e) {
@@ -117,6 +160,7 @@ class DrawRectangle {
             ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
             self.difference[0] = e.offsetX - self.startPoint[0];
             self.difference[1] = e.offsetY - self.startPoint[1];
+            ctxDraft.strokeRect(self.startPoint[0], self.startPoint[1], self.difference[0], self.difference[1]);
             ctxDraft.fillRect(self.startPoint[0], self.startPoint[1], self.difference[0], self.difference[1]);
         }
     }
@@ -153,12 +197,11 @@ class DrawCircle {
 //////////////////////////////////
 // definition of DrawStar class //
 //////////////////////////////////
-
 class DrawStar {
     constructor() {
         this.drawing = false;
-        this.topLeft = {x1: null, y1: null};
-        this.btmRight = {x2: null, y2: null};
+        this.topLeft = { x1: null, y1: null };
+        this.btmRight = { x2: null, y2: null };
         this.widthX = null;
         this.heightY = null;
         this.point1 = [];
@@ -185,7 +228,7 @@ class DrawStar {
         ctxDraft.fillStyle = globalStyle.fillColor;
         ctxReal.strokeStyle = globalStyle.lineColor;
         ctxReal.lineCap = globalStyle.lineEndShape;
-        ctxReal.lineJoin = globalStyle.lineJoinShape 
+        ctxReal.lineJoin = globalStyle.lineJoinShape
         ctxReal.lineWidth = globalStyle.lineThickness;
         ctxReal.fillStyle = globalStyle.fillColor;
 
@@ -193,6 +236,7 @@ class DrawStar {
     endPosition(e) {
         this.drawing = false;
         ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
+        ctxReal.beginPath();
         ctxReal.moveTo(self.point1[0], self.point1[1]);
         ctxReal.lineTo(self.point2[0], self.point2[1]);
         ctxReal.lineTo(self.point3[0], self.point3[1]);
@@ -202,13 +246,14 @@ class DrawStar {
         ctxReal.lineTo(self.point7[0], self.point7[1]);
         ctxReal.lineTo(self.point8[0], self.point8[1]);
         ctxReal.lineTo(self.point9[0], self.point9[1]);
-        ctxReal.lineTo(self.point10[0],self. point10[1]);
+        ctxReal.lineTo(self.point10[0], self.point10[1]);
         ctxReal.closePath();
+        ctxReal.stroke();
         ctxReal.fill();
         // ctxReal.stroke();
     }
     movePosition(e) {
-        if(this.drawing === true) {
+        if (this.drawing === true) {
             ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
             self.btmRight.x2 = e.offsetX;
             self.btmRight.y2 = e.offsetY;
@@ -244,15 +289,18 @@ class DrawStar {
             ctxDraft.lineTo(self.point7[0], self.point7[1]);
             ctxDraft.lineTo(self.point8[0], self.point8[1]);
             ctxDraft.lineTo(self.point9[0], self.point9[1]);
-            ctxDraft.lineTo(self.point10[0],self.point10[1]);
+            ctxDraft.lineTo(self.point10[0], self.point10[1]);
             ctxDraft.closePath();
+            ctxDraft.stroke();
             ctxDraft.fill();
             ctxDraft.strokeRect(self.topLeft.x1, self.topLeft.y1, self.widthX, self.heightY);
         }
     }
 }
 
-// definition of DrawPolygon class
+/////////////////////////////////////
+// definition of DrawPolygon class //
+/////////////////////////////////////
 class DrawPolygon {
     constructor() {
         this.drawing = false;
@@ -268,7 +316,7 @@ class DrawPolygon {
         ctxDraft.fillStyle = globalStyle.fillColor;
         ctxReal.strokeStyle = globalStyle.lineColor;
         ctxReal.lineCap = globalStyle.lineEndShape;
-        ctxReal.lineJoin = globalStyle.lineJoinShape 
+        ctxReal.lineJoin = globalStyle.lineJoinShape
         ctxReal.lineWidth = globalStyle.lineThickness;
         ctxReal.fillStyle = globalStyle.fillColor;
         if (e.which === 1 && altKey === true) {
@@ -277,10 +325,10 @@ class DrawPolygon {
             self.countPoint++;
             console.log(`countPoint ${self.countPoint}`)
             if (self.pointArray.length > 1) {
-                let firstX = self.pointArray[self.countPoint-2][0];
-                let firstY = self.pointArray[self.countPoint-2][1];
-                let nextX = self.pointArray[self.countPoint-1][0];
-                let nextY = self.pointArray[self.countPoint-1][1];
+                let firstX = self.pointArray[self.countPoint - 2][0];
+                let firstY = self.pointArray[self.countPoint - 2][1];
+                let nextX = self.pointArray[self.countPoint - 1][0];
+                let nextY = self.pointArray[self.countPoint - 1][1];
                 ctxReal.beginPath();
                 ctxReal.moveTo(firstX, firstY);
                 ctxReal.lineTo(nextX, nextY);
@@ -289,7 +337,7 @@ class DrawPolygon {
             if (shiftKey === true) {
                 ctxReal.beginPath();
                 ctxReal.moveTo(self.pointArray[0][0], self.pointArray[0][1]);
-                ctxReal.lineTo(self.pointArray[self.countPoint-1][0], self.pointArray[self.countPoint-1][1]);
+                ctxReal.lineTo(self.pointArray[self.countPoint - 1][0], self.pointArray[self.countPoint - 1][1]);
                 ctxReal.stroke();
                 self.pointArray = [];
                 self.countPoint = 0;
@@ -297,6 +345,7 @@ class DrawPolygon {
         }
     }
 }
+
 
 // definition of DrawText class
 class DrawText {
@@ -316,13 +365,13 @@ class DrawText {
         let sqX = Math.pow(e.offsetX - self.firstPoint[0], 2);
         let sqY = Math.pow(e.offsetY - self.firstPoint[1], 2);
         let i = Math.sqrt(sqX + sqY);
-        let radius = i/2;
-        let startpoint =[];
-        startpoint.push(e.offsetX - self.firstPoint[0])/2
-        startpoint.push(e.offsetY - self.firstPoint[1])/2
-        console.log('array'+startpoint);
+        let radius = i / 2;
+        let startpoint = [];
+        startpoint.push(e.offsetX - self.firstPoint[0]) / 2
+        startpoint.push(e.offsetY - self.firstPoint[1]) / 2
+        console.log('array' + startpoint);
         // console.log(radius);
-        ctx.arc(startpoint [0], startpoint [1], radius, 0, 2 * Math.PI);
+        ctx.arc(startpoint[0], startpoint[1], radius, 0, 2 * Math.PI);
         // ctx.stroke();
         ctx.fill();
         this.drawing = false;
@@ -332,45 +381,9 @@ class DrawText {
     // }
 }
 
-////////////////////////////////
-// definition of Eraser class //
-////////////////////////////////
-
+// definition of Eraser class
 class Eraser {
     constructor() {
 
     }
 }
-
-
-
-////////////////////////////////
-// definition DrawImage class //
-////////////////////////////////
-
-// function imgIcon(theId){
-//     document.getElementById(theId);
-// };
-
-let imgIcon = document.getElementById('emoji-1');
-
-
-class DrawingIcon {
-    constructor() {
-        this.drawing = false;
-        self = this;
-    };
-
-    startPosittion(e) {
-        this.drawing = true;
-        ctxReal.DrawImage(document.getElementById('emoji-1'),50,50,50,50);
-    };
-
-    endPosition(e){
-        this.drawing = false;
-    };
-
-    movePosition(e){
-    
-    };
-};
