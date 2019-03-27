@@ -143,61 +143,62 @@ $('#current-box').on('click', function () {
 ////////////////////////////////
 
 // color onclick
-$('#picker-1').on('click', function () {
+// $('#picker-1').on('click', function () {
     
-    pick($('#picker-1'));
-});
+//     pick($('#picker-1'));
+// });
 
-$('#picker-2').on('click', function () {
-    
-    pick($('#picker-2'));
-});
 
-$('#picker-3').on('click', function () {
+// $('#picker-2').on('click', function (callback) {
     
-    pick($('#picker-3'));
-});
+//     callback($('#picker-2'));
+// });
 
-$('#picker-4').on('click', function () {
+// $('#picker-3').on('click', function () {
     
-    pick($('#picker-4'));
-});
+//     pick($('#picker-3'));
+// });
 
-$('#picker-5').on('click', function () {
+// $('#picker-4').on('click', function () {
     
-    pick($('#picker-5'));
-});
+//     pick($('#picker-4'));
+// });
 
-$('#picker-6').on('click', function () {
+// $('#picker-5').on('click', function () {
     
-    pick($('#picker-6'));
-});
+//     pick($('#picker-5'));
+// });
 
-$('#picker-7').on('click', function () {
+// $('#picker-6').on('click', function () {
     
-    pick($('#picker-7'));
-});
+//     pick($('#picker-6'));
+// });
 
-$('#picker-8').on('click', function () {
+// $('#picker-7').on('click', function () {
     
-    pick($('#picker-8'));
-});
+//     pick($('#picker-7'));
+// });
 
-// feature btn,sec 2 - icon
-$('#picker-9').on('click', function () {
+// $('#picker-8').on('click', function () {
     
-    pick($('#picker-9'));
-});
+//     pick($('#picker-8'));
+// });
 
-$('#picker-10').on('click', function () {
+// // feature btn,sec 2 - icon
+// $('#picker-9').on('click', function () {
     
-    pick($('#picker-10'));
-});
+//     pick($('#picker-9'));
+// });
 
-$('#picker-11').on('click', function () {
+// $('#picker-10').on('click', function () {
     
-    pick($('#picker-11'));
-});
+//     pick($('#picker-10'));
+// });
+
+// $('#picker-11').on('click', function () {
+    
+//     pick($('#picker-11'));
+// });
 
 
 
