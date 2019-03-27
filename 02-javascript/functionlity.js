@@ -389,18 +389,48 @@ class DrawText {
     // }
 }
 
-// definition of Eraser class
+
+
+////////////////////////////////
+//   definition Eraser class  //
+////////////////////////////////
 class Eraser {
     constructor() {
+        this.drawing = false;
+        self = this;
+    };
 
-    }
-}
+    startPosition(e){
+            this.drawing = true;
+            console.log(e.which);
+            console.log(this.drawing);
+            ctxReal.lineWidth = globalStyle.lineThickness;
+            ctxReal.lineCap = "round";
+            ctxReal.strokeStyle = "#fff";
+            ctxReal.beginPath();
+            ctxReal.moveTo(e.offsetX, e.offsetY);
+    };
 
+    endPosition(e){
+        this.drawing = false;
+        ctxDraft.clearRect(0,0,canvasDraft[0].width,canvasDraft[0].height);
+        ctxReal.stroke();
+    };
+
+    movePosition(e){
+        if (this.drawing = true && e.which === 1) {
+            ctxReal.lineTo(e.offsetX,e.offsetY);
+            ctxReal.stroke();
+        }
+};
+};
 
 ////////////////////////////////
 // definition DrawImage class //
 ////////////////////////////////
 
+
+// icon 1
 class DrawingIconOne {
     constructor() {
         this.drawing = false;
@@ -429,6 +459,7 @@ class DrawingIconOne {
 };
 
 
+// icon 2
 class DrawingIconTwo {
     constructor() {
         this.drawing = false;
@@ -456,6 +487,7 @@ class DrawingIconTwo {
 };
 
 
+// icon 3
 class DrawingIconThree {
     constructor() {
         this.drawing = false;

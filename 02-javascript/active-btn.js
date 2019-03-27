@@ -239,3 +239,16 @@ $('#default').on('click', function () {
     clearDraft();
     clearReal();
 });
+
+
+//////////////////////////
+// save canvas as image //
+//////////////////////////
+
+//canvasReal
+$('#save').on('click', function () {
+    removeStyle();
+    let canvas = document.getElementById("canvas-real");
+    let data = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+    window.location.href = data;
+});
