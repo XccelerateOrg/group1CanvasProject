@@ -102,9 +102,13 @@ $(document).ready(function () {
         endPosition(e) {
             let sqX = Math.pow(e.offsetX - self.firstPoint[0], 2);
             let sqY = Math.pow(e.offsetY - self.firstPoint[1], 2);
-            let radius = Math.sqrt(sqX + sqY);
+            let i = Math.sqrt(sqX + sqY);
+            let x = (e.offsetX - self.firstPoint[0])/2+self.firstPoint[0];
+            let y = (e.offsetY - self.firstPoint[1])/2+self.firstPoint[1];
+            console.log(i);
+            let radius = i/2;
             console.log(radius);
-            ctx.arc(self.firstPoint[0], self.firstPoint[1], radius, 0, 2 * Math.PI);
+            ctx.arc(x, y, radius, 0, 2 * Math.PI);
             // ctx.stroke();
             ctx.fill();
             this.drawing = false;
@@ -173,30 +177,33 @@ $(document).ready(function () {
         constructor() {
             this.globalStyle = new GlobalStyle();
             this.drawing = false;
+            this.string = $('#text_cnv').html($('input:text').val());
             self = this; // for special reference to instance of DrawRectangle itself  
         };
         startPosition(e) {
             this.drawing = true;
-            ctx.fillStyle = self.globalStyle.fillColor
             ctx.beginPath();
-            self.firstPoint[0] = e.offsetX;
-            self.firstPoint[1] = e.offsetY;
+            ctx.fillStyle = '#f00';
+            ctx.font = 'italic bold 30px sans-serif';
+            ctx.textBaseline = 'bottom';
+            let res = self.string.toString();
+            ctx.fillText( res ,  e.offsetX,  e.offsetY);
         }
-        endPosition(e) {
-            let sqX = Math.pow(e.offsetX - self.firstPoint[0], 2);
-            let sqY = Math.pow(e.offsetY - self.firstPoint[1], 2);
-            let i = Math.sqrt(sqX + sqY);
-            let radius = i/2;
-            let startpoint =[];
-            startpoint.push(e.offsetX - self.firstPoint[0])/2
-            startpoint.push(e.offsetY - self.firstPoint[1])/2
-            console.log('array'+startpoint);
-            // console.log(radius);
-            ctx.arc(startpoint [0], startpoint [1], radius, 0, 2 * Math.PI);
-            // ctx.stroke();
-            ctx.fill();
-            this.drawing = false;
-        }
+        // endPosition(e) {
+        //     let sqX = Math.pow(e.offsetX - self.firstPoint[0], 2);
+        //     let sqY = Math.pow(e.offsetY - self.firstPoint[1], 2);
+        //     let i = Math.sqrt(sqX + sqY);
+        //     let radius = i/2;
+        //     let startpoint =[];
+        //     startpoint.push(e.offsetX - self.firstPoint[0])/2
+        //     startpoint.push(e.offsetY - self.firstPoint[1])/2
+        //     console.log('array'+startpoint);
+        //     // console.log(radius);
+        //     ctx.arc(startpoint [0], startpoint [1], radius, 0, 2 * Math.PI);
+        //     // ctx.stroke();
+        //     ctx.fill();
+        //     this.drawing = false;
+        // }
         // movePosition(e) {
         //     return;
         // }
@@ -229,6 +236,7 @@ $(document).ready(function () {
         canvas.removeEventListener('mousedown', paint.startPosition);
         canvas.removeEventListener('mousemove', paint.movePosition);
         canvas.removeEventListener('mouseup', paint.endPosition);
+        canvas.removeEventListener('click', paint.controlPosition);
         paint = new DrawLine();
         canvas.addEventListener('mousedown', paint.startPosition);
         canvas.addEventListener('mousemove', paint.movePosition);
@@ -241,6 +249,7 @@ $(document).ready(function () {
         canvas.removeEventListener('mousemove', paint.movePosition);
         canvas.removeEventListener('mouseup', paint.endPosition);
         canvas.removeEventListener('dbclick', paint.endPosition);
+        canvas.removeEventListener('click', paint.controlPosition);
         paint = new DrawRectangle();
         canvas.addEventListener('mousedown', paint.startPosition);
         canvas.addEventListener('mousemove', paint.movePosition);
@@ -252,6 +261,7 @@ $(document).ready(function () {
         canvas.removeEventListener('mousedown', paint.startPosition);
         canvas.removeEventListener('mousemove', paint.movePosition);
         canvas.removeEventListener('mouseup', paint.endPosition);
+        canvas.removeEventListener('click', paint.controlPosition);
         paint = new DrawTriangle();
         canvas.addEventListener('mousedown', paint.startPosition);
         canvas.addEventListener('mousemove', paint.movePosition);
@@ -263,6 +273,7 @@ $(document).ready(function () {
         canvas.removeEventListener('mousedown', paint.startPosition);
         canvas.removeEventListener('mousemove', paint.movePosition);
         canvas.removeEventListener('mouseup', paint.endPosition);
+        canvas.removeEventListener('click', paint.controlPosition);
         paint = new DrawCircle();
         canvas.addEventListener('mousedown', paint.startPosition);
         // canvas.addEventListener('mousemove', paint.movePosition);
@@ -274,8 +285,20 @@ $(document).ready(function () {
         canvas.removeEventListener('mousedown', paint.startPosition);
         canvas.removeEventListener('mousemove', paint.movePosition);
         canvas.removeEventListener('mouseup', paint.endPosition);
+        canvas.removeEventListener('click', paint.controlPosition);
         paint = new DrawCurve();
         canvas.addEventListener('click', paint.controlPosition);
+        // canvas.addEventListener('mousemove', paint.movePosition);
+        // canvas.addEventListener('mouseup', paint.endPosition);
+        console.log(paint);
+    });
+    $('#text').click(function () {
+        canvas.removeEventListener('mousedown', paint.startPosition);
+        canvas.removeEventListener('mousemove', paint.movePosition);
+        canvas.removeEventListener('mouseup', paint.endPosition);
+        canvas.removeEventListener('click', paint.controlPosition);
+        paint = new DrawText();
+        canvas.addEventListener('click', paint.startPosition);
         // canvas.addEventListener('mousemove', paint.movePosition);
         // canvas.addEventListener('mouseup', paint.endPosition);
         console.log(paint);
