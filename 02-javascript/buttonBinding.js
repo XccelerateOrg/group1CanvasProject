@@ -120,7 +120,7 @@ $('#textBox').click(function () {
     removeHandler(canvasDraft);
     paint = new DrawText();
     addHandler(canvasDraft, paint);
-    console.log(`polygon`);
+    console.log(`textBox`);
     console.log(paint);
 })
 

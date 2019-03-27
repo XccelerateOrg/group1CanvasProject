@@ -179,27 +179,56 @@ class DrawCircle {
     constructor() {
         this.drawing = false;
         this.firstPoint = [];
-        self = this;
+        this.sqX = 0;
+        this.sqY = 0;
+
+        self = this;    
     };
     startPosition(e) {
         this.drawing = true;
+        ctxReal.lineWidth = globalStyle.lineThickness;
+        ctxReal.fillStyle = globalStyle.fillColor;
+        ctxReal.strokeStyle = globalStyle.lineColor;
+        ctxReal.lineCap = globalStyle.lineEndShape;
+        ctxReal.lineJoin = globalStyle.lineJoinShape;
+        ctxReal.globalAlpha = globalStyle.opacity;
+        ctxDraft.lineWidth = globalStyle.lineThickness;
         ctxDraft.fillStyle = globalStyle.fillColor;
-        ctxDraft.beginPath();
+        ctxDraft.strokeStyle = globalStyle.lineColor;
+        ctxDraft.lineCap = globalStyle.lineEndShape;
+        ctxDraft.lineJoin = globalStyle.lineJoinShape;
+        ctxDraft.globalAlpha = globalStyle.opacity;
         self.firstPoint[0] = e.offsetX;
         self.firstPoint[1] = e.offsetY;
     }
     endPosition(e) {
-        let sqX = Math.pow(e.offsetX - self.firstPoint[0], 2);
-        let sqY = Math.pow(e.offsetY - self.firstPoint[1], 2);
-        let radius = Math.sqrt(sqX + sqY);
-        console.log(radius);
-        ctxDraft.arc(self.firstPoint[0], self.firstPoint[1], radius, 0, 2 * Math.PI);
-        // ctx.stroke();
-        ctxDraft.fill();
         this.drawing = false;
+        ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
+        this.sqX = Math.pow(e.offsetX - self.firstPoint[0], 2);
+        this.sqY = Math.pow(e.offsetY - self.firstPoint[1], 2);
+        let i = Math.sqrt(this.sqX + this.sqY);
+        let x = (e.offsetX - self.firstPoint[0])/2+self.firstPoint[0];
+        let y = (e.offsetY - self.firstPoint[1])/2+self.firstPoint[1];
+        let radius = i/2;
+        ctxReal.beginPath();
+        ctxReal.arc(x, y, radius, 0, 2 * Math.PI);
+        ctxReal.stroke();
+        ctxReal.fill();
     }
     movePosition(e) {
-        return;
+        if (this.drawing === true) {
+            ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
+            this.sqY = Math.pow(e.offsetY - self.firstPoint[1], 2);
+            this.sqX = Math.pow(e.offsetX - self.firstPoint[0], 2);
+            let i = Math.sqrt(this.sqX + this.sqY);
+            let x = (e.offsetX - self.firstPoint[0])/2+self.firstPoint[0];
+            let y = (e.offsetY - self.firstPoint[1])/2+self.firstPoint[1];
+            let radius = i/2;
+            ctxDraft.beginPath();
+            ctxDraft.arc(x, y, radius, 0, 2 * Math.PI);
+            ctxDraft.stroke();
+            ctxDraft.fill();
+        }
     }
 }
 //////////////////////////////////
@@ -358,35 +387,39 @@ class DrawPolygon {
 // definition of DrawText class
 class DrawText {
     constructor() {
-        this.globalStyle = new GlobalStyle();
         this.drawing = false;
-        self = this; // for special reference to instance of DrawRectangle itself  
+        this.string = $('#text_cnv').val().toString();
+        self = this;
     };
     startPosition(e) {
         this.drawing = true;
-        ctx.fillStyle = self.globalStyle.fillColor
-        ctx.beginPath();
-        self.firstPoint[0] = e.offsetX;
-        self.firstPoint[1] = e.offsetY;
+        // ctxDraft.shadowColor = globalStyle.shadowColor;
+        // ctxDraft.shadowBlur = globalStyle.shadowBlurLevel;
+        // ctxDraft.shadowOffsetX = globalStyle.shadowExpandX;
+        // ctxDraft.shadowOffsetY = globalStyle.shadowExpandY;
+        // ctxReal.shadowColor = globalSyle.shadowColor;
+        // ctxReal.shadowBlur = globalStyle.shadowBlurLevel;
+        // ctxReal.shadowOffsetX = globalStyle.shadowExpandX;
+        // ctxReal.shadowOffsetY = globalStyle.shadowExpandY;
     }
     endPosition(e) {
-        let sqX = Math.pow(e.offsetX - self.firstPoint[0], 2);
-        let sqY = Math.pow(e.offsetY - self.firstPoint[1], 2);
-        let i = Math.sqrt(sqX + sqY);
-        let radius = i / 2;
-        let startpoint = [];
-        startpoint.push(e.offsetX - self.firstPoint[0]) / 2
-        startpoint.push(e.offsetY - self.firstPoint[1]) / 2
-        console.log('array' + startpoint);
-        // console.log(radius);
-        ctx.arc(startpoint[0], startpoint[1], radius, 0, 2 * Math.PI);
-        // ctx.stroke();
-        ctx.fill();
-        this.drawing = false;
+        ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
+        ctxReal.beginPath();
+        ctxReal.fillStyle = '#f00';
+        ctxReal.font = 'italic bold 30px sans-serif';
+        ctxReal.textBaseline = 'bottom';
+        ctxReal.fillText( self.string ,  e.offsetX,  e.offsetY);
     }
-    // movePosition(e) {
-    //     return;
-    // }
+    movePosition(e) {
+        if (this.drawing === true) {
+            ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
+            ctxDraft.beginPath();
+            ctxDraft.fillStyle = '#f00';
+            ctxDraft.font = 'italic bold 30px sans-serif';
+            ctxDraft.textBaseline = 'bottom';
+            ctxDraft.fillText( self.string ,  e.offsetX,  e.offsetY);
+        }
+    }
 }
 
 // definition of Eraser class
