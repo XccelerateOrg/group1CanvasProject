@@ -14,7 +14,7 @@ class GlobalStyle {
         // Fill and Stroke Style
         this._fillColor = "#ffffff";         // ctx.fillStyle = self.globalStyle.fillColor     // shape inside color
         this._lineColor = "#000000";         // ctx.strokeStyle = self.globalStyle.lineColor   // border color
-        this._opacity = 0.5;                   // ctx.globalAlpha  = self.globalStyle.opacity    
+        this._opacity = 1;                   // ctx.globalAlpha  = self.globalStyle.opacity    
 
         // Shodows Style
         this._shadowColor = "#ffffff";       // ctx.shadowColor = self.globalSyle.shadowColor

@@ -140,7 +140,7 @@ $('#lineThickness').click(function() {
 })
 
 $('#opacity').click(function() {
-    globalStyle.opacity -= 0.2;
+    globalStyle.opacity = globalStyle.opacity - 0.2;
     if (globalStyle.opacity < 0.1) {
         globalStyle.opacity = 1;
     }

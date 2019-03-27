@@ -84,12 +84,14 @@ class DrawCurve {
     }
     startPosition(e) {
         if (self.startPoint.length === 0) {
-            ctxDraft.lineWidth = globalStyle.lineThickness
-            ctxDraft.lineCap = globalStyle.lineEndShape
-            ctxDraft.strokeStyle = globalStyle.lineColor
-            ctxReal.lineWidth = globalStyle.lineThickness
-            ctxReal.lineCap = globalStyle.lineEndShape
-            ctxReal.strokeStyle = globalStyle.lineColor
+            ctxDraft.lineWidth = globalStyle.lineThickness;
+            ctxDraft.lineCap = globalStyle.lineEndShape;
+            ctxDraft.strokeStyle = globalStyle.lineColor;
+            ctxDraft.globalAlpha = globalStyle.opacity;
+            ctxReal.lineWidth = globalStyle.lineThickness;
+            ctxReal.lineCap = globalStyle.lineEndShape;
+            ctxReal.strokeStyle = globalStyle.lineColor;
+            ctxReal.globalAlpha = globalStyle.opacity;
             self.startPoint[0] = e.offsetX;
             self.startPoint[1] = e.offsetY;
             console.log(`startPointX ${self.startPoint[0]} startPointY ${self.startPoint[1]}`);
