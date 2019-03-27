@@ -177,7 +177,7 @@ $(document).ready(function () {
         constructor() {
             this.globalStyle = new GlobalStyle();
             this.drawing = false;
-            this.string = $('#text_cnv').html($('input:text').val());
+            this.string = $('#text_cnv').val();
             self = this; // for special reference to instance of DrawRectangle itself  
         };
         startPosition(e) {
