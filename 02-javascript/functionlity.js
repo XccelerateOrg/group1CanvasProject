@@ -12,6 +12,7 @@ class DrawFreeStyleLine {
         ctxReal.lineWidth = globalStyle.lineThickness;
         ctxReal.lineCap = globalStyle.lineEndShape;
         ctxReal.strokeStyle = globalStyle.lineColor;
+        ctxReal.globalAlpha = globalStyle.opacity;
         ctxReal.beginPath();
         ctxReal.moveTo(e.offsetX, e.offsetY);
     }
@@ -21,6 +22,7 @@ class DrawFreeStyleLine {
     }
     movePosition(e) {
         if (this.drawing === true) {
+            ctxReal.globalAlpha = globalStyle.opacity;
             ctxReal.lineTo(e.offsetX, e.offsetY);
             ctxReal.stroke();
         }
@@ -41,9 +43,11 @@ class DrawStrightLine {
         ctxDraft.lineWidth = globalStyle.lineThickness
         ctxDraft.lineCap = globalStyle.lineEndShape
         ctxDraft.strokeStyle = globalStyle.lineColor
+        ctxDraft.globalAlpha = globalStyle.opacity;
         ctxReal.lineWidth = globalStyle.lineThickness
         ctxReal.lineCap = globalStyle.lineEndShape
         ctxReal.strokeStyle = globalStyle.lineColor
+        ctxReal.globalAlpha = globalStyle.opacity;
         self.startPoint[0] = e.offsetX;
         self.startPoint[1] = e.offsetY;
     }
@@ -80,12 +84,14 @@ class DrawCurve {
     }
     startPosition(e) {
         if (self.startPoint.length === 0) {
-            ctxDraft.lineWidth = globalStyle.lineThickness
-            ctxDraft.lineCap = globalStyle.lineEndShape
-            ctxDraft.strokeStyle = globalStyle.lineColor
-            ctxReal.lineWidth = globalStyle.lineThickness
-            ctxReal.lineCap = globalStyle.lineEndShape
-            ctxReal.strokeStyle = globalStyle.lineColor
+            ctxDraft.lineWidth = globalStyle.lineThickness;
+            ctxDraft.lineCap = globalStyle.lineEndShape;
+            ctxDraft.strokeStyle = globalStyle.lineColor;
+            ctxDraft.globalAlpha = globalStyle.opacity;
+            ctxReal.lineWidth = globalStyle.lineThickness;
+            ctxReal.lineCap = globalStyle.lineEndShape;
+            ctxReal.strokeStyle = globalStyle.lineColor;
+            ctxReal.globalAlpha = globalStyle.opacity;
             self.startPoint[0] = e.offsetX;
             self.startPoint[1] = e.offsetY;
             console.log(`startPointX ${self.startPoint[0]} startPointY ${self.startPoint[1]}`);
@@ -141,11 +147,13 @@ class DrawRectangle {
         ctxReal.strokeStyle = globalStyle.lineColor;
         ctxReal.lineCap = globalStyle.lineEndShape;
         ctxReal.lineJoin = globalStyle.lineJoinShape;
+        ctxReal.globalAlpha = globalStyle.opacity;
         ctxDraft.lineWidth = globalStyle.lineThickness;
         ctxDraft.fillStyle = globalStyle.fillColor;
         ctxDraft.strokeStyle = globalStyle.lineColor;
         ctxDraft.lineCap = globalStyle.lineEndShape;
         ctxDraft.lineJoin = globalStyle.lineJoinShape;
+        ctxDraft.globalAlpha = globalStyle.opacity;
         self.startPoint[0] = e.offsetX;
         self.startPoint[1] = e.offsetY;
     }

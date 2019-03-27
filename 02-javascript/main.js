@@ -40,6 +40,7 @@ let paint = undefined;
 let ctrlKey = false;
 let shiftKey = false;
 let altKey = false;
+let colorLineOrShape = 1;       // 1 for change line color, 2 for change for fill color
 
 paint = new DrawFreeStyleLine();
 addHandler(canvasDraft, paint);

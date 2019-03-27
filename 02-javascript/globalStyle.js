@@ -1,19 +1,20 @@
 class GlobalStyle {
     constructor() {
         // Line Style
-        this._lineThickness = 20;            // ctx.lineWidth = self.globalStyle.lineThickness   // the thickness of lines
+        this._lineThickness = 5;            // ctx.lineWidth = self.globalStyle.lineThickness   // the thickness of lines
         this._lineEndShape = "round";        // ctx.lineCap = self.globalStyle.lineEndShape      // the shape of ending point on the line "round圓角" "butt短方角" "square長方角"
         this._lineJoinShape = "round";       // ctx.lineJoin = self.globalStyle.lineJoinShape    // the shape used to join to line "round圓角" "miter尖角" "bevel平角"
         
         // Text Style
         this._fontSize = 10;                 // ctx.font = `${self.globalStyle.fontSize}px ${self.globalStyle.fontStyle}`
         this._fontStyle = "sans-serif";      // ctx.font = `${self.globalStyle.fontSize}px ${self.globalStyle.fontStyle}`
-        this._textAlignment = "start"        // ctx.textAlign  = self.globalStyle.textAlignment      // "start" "end" "left" "right" "center"
+        this._textAlignment = "left"        // ctx.textAlign  = self.globalStyle.textAlignment      // "start" "end" "left" "right" "center"
         this._textBaseline = "alphabetic"    // ctx.textBaseline  = self.globalStyle.textBaseline    // "top", "middle", "bottom", "hanging", "alphabetic", "ideographic"
 
         // Fill and Stroke Style
-        this._fillColor = "#550088";         // ctx.fillStyle = self.globalStyle.fillColor     // shape inside color
-        this._lineColor = "#558888";         // ctx.strokeStyle = self.globalSytle.lineColor   // border color
+        this._fillColor = "#ffffff";         // ctx.fillStyle = self.globalStyle.fillColor     // shape inside color
+        this._lineColor = "#000000";         // ctx.strokeStyle = self.globalStyle.lineColor   // border color
+        this._opacity = 1;                   // ctx.globalAlpha  = self.globalStyle.opacity    
 
         // Shodows Style
         this._shadowColor = "#ffffff";       // ctx.shadowColor = self.globalSyle.shadowColor
@@ -86,6 +87,13 @@ class GlobalStyle {
     };
     set lineColor(value) {
         this._lineColor = value;
+    }
+
+    get opacity() {
+        return this._opacity;
+    }
+    set opacity(value) {
+        this._opacity = value;
     }
 
     // Shodows Style Getter and Setter
