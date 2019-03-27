@@ -130,3 +130,28 @@ $('#eraser').click(function () {
     console.log(`eraser`);
     console.log(paint);
 })
+
+
+$('#emojiBox-1').click(function () {
+    removeHandler(canvasDraft);
+    paint = new DrawingIcon();
+    addHandler(canvasDraft, paint);
+    console.log(`emoji-1`);
+    console.log(paint);
+})
+
+$('#emojiBox-2').click(function () {
+    removeHandler(canvasDraft);
+    paint = new DrawingIcon();
+    addHandler(canvasDraft, paint);
+    console.log(`emoji-2`);
+    console.log(paint);
+})
+
+$('#emojiBox-3').click(function () {
+    removeHandler(canvasDraft);
+    paint = new DrawingIcon();
+    addHandler(canvasDraft, paint);
+    console.log(`emoji-3`);
+    console.log(paint);
+})

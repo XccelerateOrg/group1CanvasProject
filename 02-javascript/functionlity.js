@@ -341,3 +341,36 @@ class Eraser {
 
     }
 }
+
+
+
+////////////////////////////////
+// definition DrawImage class //
+////////////////////////////////
+
+// function imgIcon(theId){
+//     document.getElementById(theId);
+// };
+
+let imgIcon = document.getElementById('emoji-1');
+
+
+class DrawingIcon {
+    constructor() {
+        this.drawing = false;
+        self = this;
+    };
+
+    startPosittion(e) {
+        this.drawing = true;
+        ctxReal.DrawImage(document.getElementById('emoji-1'),50,50,50,50);
+    };
+
+    endPosition(e){
+        this.drawing = false;
+    };
+
+    movePosition(e){
+    
+    };
+};
