@@ -23,47 +23,21 @@ function removeStyle() {
 
 
 //style - change current color
-function clickCurrentPicker(theId){
-    theId.on('click', function(){
-        $('.current-color').css({"z-index" : "0"});
-        theId.css({"z-index" : "10"});
-    });
-}
+function addIndexToColor(theId){
+    theId.addClass('add-index');
+};
 
-// // pick this color
-// function pickThisColor(theId){
-//     theId.
-// }
+function removeIndex(){
+    let colorA = $('#color-a');
+    let colorB = $('#color-b');
+    colorA.removeClass('add-index');
+    colorB.removeClass('add-index');
+};
 
-
-//style - change current color
-// function changeCurrentColor(){
-//     if ($('color-a').css({"z-index" : 1} == true)){
-//         $('#color-a').css("background-color", pick);
-//     }
-
-//     // $('color-b').on('click' , function(){
-//     //     $('color-b').addClass('higher-zindex');
-//     // })
-// };
-
-// changeCurrentColor();
-
-// // style - pick color, callback
-
-// // function pickColor() {
-// //     if ($('#color-a').css({"z-index" : 1} == true){
-// //         $('#color-a').css("background-color", pick);
-// //     }
-// // }
-
-// // style - color onclick, callback
-// function pick (theId) {
-//     theId.on('click' , function(){
-//         theId.css("background-color");
-//     })
-// };
-
+function removeDefaultIndex(){
+    let colorB = $('#color-b');
+    colorB.removeClass('default-index');
+};
 
 
 // --------------
@@ -131,18 +105,31 @@ $('#f-12').on('click', function () {
 });
 
 
-// --------------
+
+////////////////////////////////
+/// change current color a/b ///
+////////////////////////////////
 
 // current color picker - styles
-$('#color-a').on('click', function () {
-    clickCurrentPicker($('#color-a'));
+$('#current-box').on('click', function () {
+    if ($('#color-b').hasClass('default-index')) {
+        removeDefaultIndex();
+        $('#color-a').addClass('add-index');
+
+    } else if ($('#color-a').hasClass('add-index')) {
+        removeIndex();
+        $('#color-b').addClass('add-index');
+
+    } else if ($('#color-b').hasClass('add-index')) {
+        removeIndex();
+        $('#color-a').addClass('add-index');
+    }
 });
 
-$('#color-b').on('click', function () {
-    clickCurrentPicker($('#color-b'));
-});
 
-// --------------
+////////////////////////////////
+///     color on click       ///
+////////////////////////////////
 
 // color onclick
 $('#picker-1').on('click', function () {
