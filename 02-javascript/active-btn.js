@@ -1,5 +1,16 @@
 // active btn js
 
+// clear draft
+let clearDraft = function() {
+    ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
+}
+
+// clear real
+let clearReal = function() {
+    ctxReal.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
+}
+
+
 // feature active, callback
 function activeFeature(theId) {
     theId.addClass ('feature-active');
@@ -219,8 +230,11 @@ $('#s-5').on('click', function () {
     activeStyle($('#s-5'));
 });
 
-// back to default setting
+// back to default setting, removehandler on canvas draft
 $('#default').on('click', function () {
     removeFeature();
     removeStyle();
+    removeHandler(canvasDraft);
+    clearDraft();
+    clearReal();
 });
