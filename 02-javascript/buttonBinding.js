@@ -31,7 +31,7 @@ document.addEventListener('keyup', function (e) {
             console.log(`ctrl = true`);
             break;
         case 18:
-            altKey = true;
+            altKey = false;
             console.log(`alt = false`);
             break;
         default:
