@@ -369,7 +369,7 @@ class DrawPolygon {
 
 class DrawText {
     constructor() {
-        this.drawing = false;
+        this.drawing = true;
         this.string = $('#text_cnv').val().toString();
         self = this;
     };
@@ -378,21 +378,20 @@ class DrawText {
     }
     endPosition(e) {
         ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
-        ctxReal.beginPath();
-        ctxReal.fillStyle = globalStyle.fillStyle;
-        ctxReal.fontStyle = globalStyle.fontStyle;
-        ctxReal.fontSize = globalStyle.fontSize;
+        ctxReal.font = `${globalStyle.fontSize}px ${globalStyle.fontStyle}`;
         ctxReal.textBaseline = globalStyle.textBaseline;
+        ctxReal.fillStyle = globalStyle.fillColor;
+        ctxReal.beginPath();
         ctxReal.fillText(self.string, e.offsetX, e.offsetY);
     }
     movePosition(e) {
         if (this.drawing === true) {
+            this.string = $('#text_cnv').val().toString();
             ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
-            ctxDraft.beginPath();
-            ctxDraft.fillStyle = globalStyle.fillStyle;
-            ctxDraft.fontStyle = globalStyle.fontStyle;
-            ctxDraft.fontSize = globalStyle.fontSize;
+            ctxDraft.fillStyle = globalStyle.fillColor;
+            ctxDraft.font = `${globalStyle.fontSize}px ${globalStyle.fontStyle}`;
             ctxDraft.textBaseline = globalStyle.textBaseline;
+            ctxDraft.beginPath();
             ctxDraft.fillText(self.string, e.offsetX, e.offsetY);
         }
     }

@@ -123,7 +123,6 @@ $('#eraser').click(function () {
     console.log(paint);
 })
 
-
 $('#emojiBox-1').click(function () {
     clearDraft();
     removeHandler(canvasDraft);
