@@ -21,6 +21,8 @@ let defaultColor = function() {
     // default order
     removeIndex();
     $('#color-b').addClass('default-index');
+
+    $('#colorPicker').val('#BEEDD5');
 }
 
 // hide textbox
