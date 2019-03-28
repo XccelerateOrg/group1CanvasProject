@@ -15,6 +15,7 @@ class DrawFreeStyleLine {
         ctxReal.globalAlpha = globalStyle.opacity;
         ctxReal.beginPath();
         ctxReal.moveTo(e.offsetX, e.offsetY);
+        ctxReal.stroke();
     }
     endPosition(e) {
         this.drawing = false;
@@ -154,6 +155,7 @@ class DrawRectangle {
         ctxDraft.lineCap = globalStyle.lineEndShape;
         ctxDraft.lineJoin = globalStyle.lineJoinShape;
         ctxDraft.globalAlpha = globalStyle.opacity;
+
         self.startPoint[0] = e.offsetX;
         self.startPoint[1] = e.offsetY;
     }

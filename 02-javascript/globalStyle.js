@@ -17,10 +17,10 @@ class GlobalStyle {
         this._opacity = 1;                   // ctx.globalAlpha  = self.globalStyle.opacity    
 
         // Shodows Style
-        this._shadowColor = "#ffffff";       // ctx.shadowColor = self.globalSyle.shadowColor
-        this._shadowBlurLevel = 10;           // ctx.shadowBlur = self.globalStyle.shadowBlurLevel
-        this._shadowExpandX = 10;             // ctx.shadowOffsetX = self.globalStyle.shadowExpandX
-        this._shadowExpandY = 10;             // ctx.shadowOffsetY = self.globalStyle.shadowExpand
+        this._shadowColor = null;            // ctx.shadowColor = self.globalSyle.shadowColor
+        this._shadowBlurLevel = 0;           // ctx.shadowBlur = self.globalStyle.shadowBlurLevel
+        this._shadowExpandX = 0;             // ctx.shadowOffsetX = self.globalStyle.shadowExpandX
+        this._shadowExpandY = 0;             // ctx.shadowOffsetY = self.globalStyle.shadowExpandY
     };
     
     // Text Style Getter and Setter
@@ -112,7 +112,7 @@ class GlobalStyle {
     }
 
     get shadowExpandX() {
-        return this.shadowExpandX;
+        return this._shadowExpandX;
     }
     set shadowExpandX(value) {
         this._shadowExpandX = value;
