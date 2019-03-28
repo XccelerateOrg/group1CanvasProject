@@ -61,6 +61,7 @@ function addHandler(canvas, paint) {
 ////////////////////////////////////
 
 $('#freeStyle').click(function () {
+    clearDraft();
     removeHandler(canvasDraft);
     paint = new DrawFreeStyleLine();
     addHandler(canvasDraft, paint);
@@ -117,6 +118,7 @@ $('#polygon').click(function () {
 })
 
 $('#textBox').click(function () {
+    clearDraft();
     removeHandler(canvasDraft);
     paint = new DrawText();
     addHandler(canvasDraft, paint);
