@@ -15,6 +15,8 @@ function chnageWindowSize() {
     $('.style-wrapper').css('height', Math.floor(screenHeight) - 50);
 };
 
+
+
 $(document).ready(function () {
     chnageWindowSize();
     $(window).resize(chnageWindowSize);
@@ -25,7 +27,7 @@ const canvasDraft = $('#canvas-draft');
 const ctxDraft = canvasDraft[0].getContext('2d');
 const canvasReal = $('#canvas-real');
 const ctxReal = canvasReal[0].getContext('2d');
-const globalStyle = new GlobalStyle();
+let globalStyle = new GlobalStyle();
 let paint = undefined;
 let ctrlKey = false;
 let shiftKey = false;

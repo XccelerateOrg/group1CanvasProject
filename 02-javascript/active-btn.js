@@ -131,6 +131,11 @@ $('#f-8').on('click', function () {
     removeCommand();
     keyCommand($('#g-8'));
     activeFeature($('#f-8'));
+    if (colorLineOrShape === 1) {
+        $('#current-box').trigger('click');
+    }
+    globalStyle.fillColor = '#000000';
+    $('#color-a').css("background-color", globalStyle.fillColor);
     if ($('#f-8').hasClass('feature-active')) {
         $('.textbox-wrapper').css("display", "block");
         $('#text_cnv').keyup(function() {
@@ -219,6 +224,13 @@ $('#default').on('click', function () {
     defaultColor();
     hideTextBox();
     removeCommand();
+    keyCommand($('#g-1'));
+    activeFeature($('#f-1'));
+    globalStyle = new GlobalStyle();
+    paint = new DrawFreeStyleLine();
+    addHandler(canvasDraft, paint);
+    console.log(globalStyle);
+    console.log(paint);
 });
 
 $('#save').on('click', function () {
