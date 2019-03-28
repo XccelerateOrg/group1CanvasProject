@@ -410,7 +410,7 @@ class Eraser {
         ctxReal.lineCap = "round";
         ctxReal.strokeStyle = "#fff";
         ctxReal.beginPath();
-        ctxReal.moveTo(e.offsetX, e.offsetY);
+        ctxReal.moveTo(e.offsetX + globalStyle.lineThickness/2, e.offsetY + globalStyle.lineThickness/2);
     };
 
     endPosition(e) {
@@ -420,10 +420,16 @@ class Eraser {
     };
 
     movePosition(e) {
+        ctxDraft.lineCap = "round";
+        ctxDraft.strokeStyle = "#000";
+        ctxDraft.fillStyle = "#fff";
+        ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
         if (this.drawing = true && e.which === 1) {
-            ctxReal.lineTo(e.offsetX, e.offsetY);
+            ctxReal.lineTo(e.offsetX + globalStyle.lineThickness/2, e.offsetY + globalStyle.lineThickness/2);
             ctxReal.stroke();
         }
+        ctxDraft.strokeRect(e.offsetX, e.offsetY, globalStyle.lineThickness, globalStyle.lineThickness);
+        ctxDraft.fillRect(e.offsetX, e.offsetY, globalStyle.lineThickness, globalStyle.lineThickness);
     };
 };
 
