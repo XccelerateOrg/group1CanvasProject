@@ -436,7 +436,7 @@ class Eraser {
 class DrawingIconOne {
     constructor() {
         this.drawing = false;
-        this.imgIcon = document.getElementById('emoji-1');
+        this.imgIcon = null;
         self = this;
     };
 
@@ -452,6 +452,9 @@ class DrawingIconOne {
     };
 
     movePosition(e) {
+        let image = new Image();
+        image.src = $(`#emoji-1`).attr('src');
+        self.imgIcon = image;
         ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
         if (altKey === true && this.drawing === true) {
             ctxReal.drawImage(self.imgIcon, e.offsetX - 15, e.offsetY - 20, 35, 35);
@@ -460,10 +463,11 @@ class DrawingIconOne {
     };
 };
 
+
 class DrawingIconTwo {
     constructor() {
         this.drawing = false;
-        this.imgIcon = document.getElementById('emoji-2');
+        this.imgIcon = null;
         self = this;
     };
 
@@ -478,6 +482,9 @@ class DrawingIconTwo {
     };
 
     movePosition(e) {
+        let image = new Image();
+        image.src = $(`#emoji-2`).attr('src');
+        self.imgIcon = image;
         ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
         if (altKey === true && this.drawing === true) {
             ctxReal.drawImage(self.imgIcon, e.offsetX - 15, e.offsetY - 20, 35, 35);
@@ -489,7 +496,7 @@ class DrawingIconTwo {
 class DrawingIconThree {
     constructor() {
         this.drawing = false;
-        this.imgIcon = document.getElementById('emoji-3');
+        this.imgIcon = null;
         self = this;
     };
 
@@ -504,6 +511,9 @@ class DrawingIconThree {
     };
 
     movePosition(e) {
+        let image = new Image();
+        image.src = $(`#emoji-3`).attr('src');
+        self.imgIcon = image;
         ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
         if (altKey === true && this.drawing === true) {
             ctxReal.drawImage(self.imgIcon, e.offsetX - 15, e.offsetY - 20, 35, 35);
