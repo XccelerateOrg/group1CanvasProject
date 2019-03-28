@@ -369,31 +369,34 @@ class DrawPolygon {
 
 class DrawText {
     constructor() {
-        this.drawing = true;
+        // this.drawing = false;
         this.string = $('#text_cnv').val().toString();
+        // this.string = 'sdfghg';
         self = this;
     };
     startPosition(e) {
-        this.drawing = true;
+        // this.drawing = true;
     }
     endPosition(e) {
         ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
         ctxReal.font = `${globalStyle.fontSize}px ${globalStyle.fontStyle}`;
         ctxReal.textBaseline = globalStyle.textBaseline;
         ctxReal.fillStyle = globalStyle.fillColor;
+        ctxReal.globalAlpha = globalStyle.opacity;
         ctxReal.beginPath();
         ctxReal.fillText(self.string, e.offsetX, e.offsetY);
     }
     movePosition(e) {
-        if (this.drawing === true) {
+        // if (this.drawing === true) {
             this.string = $('#text_cnv').val().toString();
             ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
-            ctxDraft.fillStyle = globalStyle.fillColor;
             ctxDraft.font = `${globalStyle.fontSize}px ${globalStyle.fontStyle}`;
             ctxDraft.textBaseline = globalStyle.textBaseline;
+            ctxDraft.fillStyle = globalStyle.fillColor;
+            ctxDraft.globalAlpha = globalStyle.opacity;
             ctxDraft.beginPath();
             ctxDraft.fillText(self.string, e.offsetX, e.offsetY);
-        }
+        // }
     }
 }
 

@@ -133,6 +133,9 @@ $('#f-8').on('click', function () {
     activeFeature($('#f-8'));
     if ($('#f-8').hasClass('feature-active')) {
         $('.textbox-wrapper').css("display", "block");
+        $('#text_cnv').keyup(function() {
+            paint = new DrawText();
+        })
     }
 });
 
@@ -171,7 +174,7 @@ $('#f-12').on('click', function () {
     keyCommand($('#g-12'));
     activeFeature($('#f-12'));
 });
-
+ 
 $('#current-box').on('click', function () {
     if ($('#color-b').hasClass('default-index')) {
         removeDefaultIndex();
