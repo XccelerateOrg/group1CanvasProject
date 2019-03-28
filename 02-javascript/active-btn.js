@@ -233,3 +233,9 @@ $('#save').on('click', function () {
     let data = canvas.toDataURL().replace("image/png", "image/octet-stream");
     window.location.href = data;
 });
+
+// $(document).ready(function(e) {
+//     console.log(canvas.offsetX);
+//     $('#x-axis').append(ctxReal.offsetX);
+//     $('#y-axis').append(ctxReal.offsetY);
+// })

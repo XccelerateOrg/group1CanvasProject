@@ -21,7 +21,7 @@ class DrawFreeStyleLine {
         ctxReal.stroke();
     }
     movePosition(e) {
-        if (this.drawing === true) {
+        if (this.drawing === true && e.which === 1) {
             ctxReal.globalAlpha = globalStyle.opacity;
             ctxReal.lineTo(e.offsetX, e.offsetY);
             ctxReal.stroke();
