@@ -1,6 +1,3 @@
-//////////////////////////////////
-// definition of DrawLine class //
-//////////////////////////////////
 class DrawFreeStyleLine {
     constructor() {
         this.drawing = false;
@@ -30,9 +27,6 @@ class DrawFreeStyleLine {
     }
 }
 
-//////////////////////////////////////
-// definition DrawStrightLine class //
-//////////////////////////////////////
 class DrawStrightLine {
     constructor() {
         this.drawing = false;
@@ -72,9 +66,6 @@ class DrawStrightLine {
     }
 }
 
-////////////////////////////////
-// definition DrawCurve class //
-////////////////////////////////
 class DrawCurve {
     constructor() {
         this.drawing = false;
@@ -131,9 +122,6 @@ class DrawCurve {
 
 }
 
-///////////////////////////////////////
-// definition of DrawRectangle class //
-///////////////////////////////////////
 class DrawRectangle {
     constructor() {
         this.drawing = false;
@@ -176,7 +164,6 @@ class DrawRectangle {
     }
 }
 
-// definition of DrawCircle class
 class DrawCircle {
     constructor() {
         this.drawing = false;
@@ -184,7 +171,7 @@ class DrawCircle {
         this.sqX = 0;
         this.sqY = 0;
 
-        self = this;    
+        self = this;
     };
     startPosition(e) {
         this.drawing = true;
@@ -209,9 +196,9 @@ class DrawCircle {
         this.sqX = Math.pow(e.offsetX - self.firstPoint[0], 2);
         this.sqY = Math.pow(e.offsetY - self.firstPoint[1], 2);
         let i = Math.sqrt(this.sqX + this.sqY);
-        let x = (e.offsetX - self.firstPoint[0])/2+self.firstPoint[0];
-        let y = (e.offsetY - self.firstPoint[1])/2+self.firstPoint[1];
-        let radius = i/2;
+        let x = (e.offsetX - self.firstPoint[0]) / 2 + self.firstPoint[0];
+        let y = (e.offsetY - self.firstPoint[1]) / 2 + self.firstPoint[1];
+        let radius = i / 2;
         ctxReal.beginPath();
         ctxReal.arc(x, y, radius, 0, 2 * Math.PI);
         ctxReal.stroke();
@@ -223,9 +210,9 @@ class DrawCircle {
             this.sqY = Math.pow(e.offsetY - self.firstPoint[1], 2);
             this.sqX = Math.pow(e.offsetX - self.firstPoint[0], 2);
             let i = Math.sqrt(this.sqX + this.sqY);
-            let x = (e.offsetX - self.firstPoint[0])/2+self.firstPoint[0];
-            let y = (e.offsetY - self.firstPoint[1])/2+self.firstPoint[1];
-            let radius = i/2;
+            let x = (e.offsetX - self.firstPoint[0]) / 2 + self.firstPoint[0];
+            let y = (e.offsetY - self.firstPoint[1]) / 2 + self.firstPoint[1];
+            let radius = i / 2;
             ctxDraft.beginPath();
             ctxDraft.arc(x, y, radius, 0, 2 * Math.PI);
             ctxDraft.stroke();
@@ -233,9 +220,7 @@ class DrawCircle {
         }
     }
 }
-//////////////////////////////////
-// definition of DrawStar class //
-//////////////////////////////////
+
 class DrawStar {
     constructor() {
         this.drawing = false;
@@ -337,9 +322,6 @@ class DrawStar {
     }
 }
 
-/////////////////////////////////////
-// definition of DrawPolygon class //
-/////////////////////////////////////
 class DrawPolygon {
     constructor() {
         this.drawing = false;
@@ -385,8 +367,6 @@ class DrawPolygon {
     }
 }
 
-
-// definition of DrawText class
 class DrawText {
     constructor() {
         this.drawing = false;
@@ -395,14 +375,6 @@ class DrawText {
     };
     startPosition(e) {
         this.drawing = true;
-        // ctxDraft.shadowColor = globalStyle.shadowColor;
-        // ctxDraft.shadowBlur = globalStyle.shadowBlurLevel;
-        // ctxDraft.shadowOffsetX = globalStyle.shadowExpandX;
-        // ctxDraft.shadowOffsetY = globalStyle.shadowExpandY;
-        // ctxReal.shadowColor = globalSyle.shadowColor;
-        // ctxReal.shadowBlur = globalStyle.shadowBlurLevel;
-        // ctxReal.shadowOffsetX = globalStyle.shadowExpandX;
-        // ctxReal.shadowOffsetY = globalStyle.shadowExpandY;
     }
     endPosition(e) {
         ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
@@ -411,7 +383,7 @@ class DrawText {
         ctxReal.fontStyle = globalStyle.fontStyle;
         ctxReal.fontSize = globalStyle.fontSize;
         ctxReal.textBaseline = globalStyle.textBaseline;
-        ctxReal.fillText( self.string ,  e.offsetX,  e.offsetY);
+        ctxReal.fillText(self.string, e.offsetX, e.offsetY);
     }
     movePosition(e) {
         if (this.drawing === true) {
@@ -421,53 +393,42 @@ class DrawText {
             ctxDraft.fontStyle = globalStyle.fontStyle;
             ctxDraft.fontSize = globalStyle.fontSize;
             ctxDraft.textBaseline = globalStyle.textBaseline;
-            ctxDraft.fillText( self.string ,  e.offsetX,  e.offsetY);
+            ctxDraft.fillText(self.string, e.offsetX, e.offsetY);
         }
     }
 }
 
-
-
-////////////////////////////////
-//   definition Eraser class  //
-////////////////////////////////
 class Eraser {
     constructor() {
         this.drawing = false;
         self = this;
     };
 
-    startPosition(e){
-            this.drawing = true;
-            console.log(e.which);
-            console.log(this.drawing);
-            ctxReal.lineWidth = globalStyle.lineThickness;
-            ctxReal.lineCap = "round";
-            ctxReal.strokeStyle = "#fff";
-            ctxReal.beginPath();
-            ctxReal.moveTo(e.offsetX, e.offsetY);
+    startPosition(e) {
+        this.drawing = true;
+        console.log(e.which);
+        console.log(this.drawing);
+        ctxReal.lineWidth = globalStyle.lineThickness;
+        ctxReal.lineCap = "round";
+        ctxReal.strokeStyle = "#fff";
+        ctxReal.beginPath();
+        ctxReal.moveTo(e.offsetX, e.offsetY);
     };
 
-    endPosition(e){
+    endPosition(e) {
         this.drawing = false;
-        ctxDraft.clearRect(0,0,canvasDraft[0].width,canvasDraft[0].height);
+        ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
         ctxReal.stroke();
     };
 
-    movePosition(e){
+    movePosition(e) {
         if (this.drawing = true && e.which === 1) {
-            ctxReal.lineTo(e.offsetX,e.offsetY);
+            ctxReal.lineTo(e.offsetX, e.offsetY);
             ctxReal.stroke();
         }
+    };
 };
-};
 
-////////////////////////////////
-// definition DrawImage class //
-////////////////////////////////
-
-
-// icon 1
 class DrawingIconOne {
     constructor() {
         this.drawing = false;
@@ -495,8 +456,6 @@ class DrawingIconOne {
     };
 };
 
-
-// icon 2
 class DrawingIconTwo {
     constructor() {
         this.drawing = false;
@@ -523,8 +482,6 @@ class DrawingIconTwo {
     };
 };
 
-
-// icon 3
 class DrawingIconThree {
     constructor() {
         this.drawing = false;

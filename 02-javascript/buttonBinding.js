@@ -1,7 +1,3 @@
-////////////////////////////
-// binding keybroad event //
-////////////////////////////
-
 document.addEventListener('keydown', function (e) {
     switch (e.which) {
         case 16:
@@ -39,10 +35,6 @@ document.addEventListener('keyup', function (e) {
     }
 })
 
-///////////////////////////////////
-// binding User Interface Button //
-///////////////////////////////////
-
 function removeHandler(canvas) {
     canvas.off('mousedown');
     canvas.off('mousemove');
@@ -55,10 +47,6 @@ function addHandler(canvas, paint) {
     canvas.on('mousemove', paint.movePosition);
     canvas.on('mouseup', paint.endPosition);
 }
-
-////////////////////////////////////
-// binding functionlity to button //
-////////////////////////////////////
 
 $('#freeStyle').click(function () {
     clearDraft();

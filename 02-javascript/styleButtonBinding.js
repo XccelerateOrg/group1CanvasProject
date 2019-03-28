@@ -1,16 +1,13 @@
-// change set line color or shape color
 $('#current-box').click(function () {
     if (colorLineOrShape !== 1) {
-        colorLineOrShape = 1;       // 1 for change line color
+        colorLineOrShape = 1;
     }
     else {
-        colorLineOrShape = 2;       // 2 for change for fill color
+        colorLineOrShape = 2;
     }
     console.log(`colorLineOrShape ${colorLineOrShape}`);
 })
 
-// seting globalStyle.lineColor
-// seting globalStyle.fillColor
 $('#picker-1').click(function () {
     if (colorLineOrShape === 1) {
         globalStyle.lineColor = $(this).css("background-color");
@@ -204,34 +201,4 @@ $('#alignment').click(function () {
         globalStyle._textAlignment = "left";
         console.log(`alignment ${globalStyle.textAlignment}`);
     }
-})
-
-$('#shodowColor').click(function() {
-    if (globalStyle.shadowColor === null) {
-        globalStyle.shadowColor = globalStyle.fillColor;
-        console.log(`shodow ${globalStyle.shadowColor}`);
-    }
-    else {
-        globalStyle.shadowColor = null;
-        console.log(`shodow ${globalStyle.shadowColor}`);
-    }
-})
-
-$('#shadowBlurLevel').click(function() {
-    globalStyle.shadowBlurLevel += 5;
-    if (globalStyle.shadowBlurLevel > 25) {
-        globalStyle.shadowBlurLevel = 0;
-    }
-    console.log(`shodow ${globalStyle.shadowBlurLevel}`);
-})
-
-$('#shadowExpand').click(function() {
-    globalStyle.shadowExpandX += 5;
-    globalStyle.shadowExpandY += 5;
-    if (globalStyle.shadowExpandX > 25 && globalStyle.shadowExpandY > 25) {
-        globalStyle.shadowExpandX = 0;
-        globalStyle.shadowExpandY = 0;
-    }
-    console.log(`shadowExpandX ${globalStyle.shadowExpandX}`);
-    console.log(`shadowExpandY ${globalStyle.shadowExpandY}`);
 })

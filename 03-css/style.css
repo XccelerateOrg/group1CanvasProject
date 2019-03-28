@@ -2,17 +2,14 @@
     image-rendering: pixelated;
 }
 
-/* scrollbar */
 ::-webkit-scrollbar {
     width: 0;
 }
 
-/* scroll track */
 ::-webkit-scrollbar-track {
     background: transparent;
 }
 
-/* scroll handle */
 ::-webkit-scrollbar-thumb {
     background: none;
 }
@@ -24,11 +21,9 @@ body {
     left: 0;
     box-sizing: border-box;
     display: block;
-    /* font */
     font-family: Helvetica, Arial, sans-serif;
     font-size: 14px;
 }
-
 
 .bg-color {
     background-color: #bcbcbc;
@@ -46,7 +41,6 @@ body {
     border-right: 2px solid #f0f0f0;
 }
 
-/* topbar section */
 .topbar {
     position: fixed;
     display: flex;
@@ -72,9 +66,7 @@ body {
 }
 
 
-/* feature section */
 .feature-wrapper {
-    /* border: 1px #dfdfdf solid; */
     border-right: 2px #dfdfdf solid;
     border-bottom: 0px #dfdfdf solid;
     float: left;
@@ -118,20 +110,15 @@ body {
     height: 100%;
 }
 
-
-/* canvas section */
 .canvas-wrapper {
     position: absolute;
 }
 
-/* canvas overlap */
 canvas {
     position: absolute;
     top: 0;
 }
 
-
-/* style section */
 .style-wrapper {
     position: relative;
     display: flex;
@@ -160,7 +147,6 @@ canvas {
     margin-top: 14px;
 }
 
-/* color picker section */
 .color-container {
     padding: 0px;
 }
@@ -199,14 +185,13 @@ canvas {
 #color-a {
     top: 3px;
     left: 3px;
-    background-color: #fff; /* default color, fill !!! */
+    background-color: #fff;
 }
-
 
 #color-b {
     bottom: 3px;
     right: 3px;
-    background-color: #000; /* default color, line !!!*/
+    background-color: #000;
 }
 
 .selected-wrapper {
@@ -231,30 +216,22 @@ canvas {
     border-style: ridge;
 }
 
-
-/* color selection */
-#picker-1 {background-color: #000000;} /* global style */
-#picker-2 {background-color: #555555;} /* global style */
-#picker-3 {background-color: #ffffff;} /* global style */
-#picker-4 {background-color: #E87663;} /* global style */
-#picker-5 {background-color: #FFD973;} /* global style */
-#picker-6 {background-color: #A4FFB2;} /* global style */
-#picker-7 {background-color: #76BCE8;} /* global style */
-#picker-8 {background-color: #C169FF;} /* global style */
-#picker-9 {background-color: #816556;} /* global style */
-#picker-10 {background-color: #E3CDA4;} /* global style */
+#picker-1 {background-color: #000000;}
+#picker-2 {background-color: #555555;}
+#picker-3 {background-color: #ffffff;}
+#picker-4 {background-color: #E87663;}
+#picker-5 {background-color: #FFD973;}
+#picker-6 {background-color: #A4FFB2;}
+#picker-7 {background-color: #76BCE8;}
+#picker-8 {background-color: #C169FF;}
+#picker-9 {background-color: #816556;}
+#picker-10 {background-color: #E3CDA4;}
 #colorPicker {background: linear-gradient(to top right, #E87663 , #FFD973, #A4FFB2, #76BCE8, #C169FF);}
- /* global style, custom */
 
- /* for color picker */
-/* input[type="color"]::-webkit-color-swatch-wrapper {
-	padding: 0;
-} */
 input[type="color"]::-webkit-color-swatch {
 	border-color: #9e9d9d98;
 }
 
-/* other style sections */
 .style-section {
     display: flex;
     justify-content: flex-end;
@@ -289,44 +266,17 @@ input[type="color"]::-webkit-color-swatch {
     height: 22px;
 }
 
-/* display xy axis */
-/* .axis-wrapper {
-    padding-left: 50px;
-    width: 100%;
-    height: 28px;
-}
-
-#axis-box {
-    width: 76px;
-    height: 28px;
-    border: 3px solid #cfcfcf;
-    border-style: ridge;
-}
-
-.style-btn span {
-    font-size: 10px;
-    color: #111;
-} */
-
-
-/* -------------- */
-/* hover & active */
-/* -------------- */
-
-/* hover & active btn */
 .feature-box:hover {
     border: 2px solid #cfcfcf;
     border-style: inset;
 }
 
-/* feature active class */
 .feature-active {
     border: 2px solid #cfcfcf;
     border-style: inset;
     background-color: #d8d6d6fa;
 }
 
-/* selected color, set z-index once clicked */
 .higher-zindex {
     z-index: 10;
 }
@@ -346,20 +296,11 @@ input[type="color"]::-webkit-color-swatch {
     border-style: ridge;
 }
 
-/* style active class */
 .style-active {
     border: 3px solid #fff;
     background-color: #d8d6d6fa;
     border-style: ridge;
 }
-
-/* -------------- */
-/* -------------- */
-
-
-/* -------------- */
-/*    tooltips    */
-/* -------------- */
 
 .guide-wrapper {
     margin-top: 14px;
@@ -370,7 +311,6 @@ input[type="color"]::-webkit-color-swatch {
     display: none;
     float: right
 }
-
 
 .guide-box {
     text-align: left;
@@ -401,4 +341,3 @@ input[type="color"]::-webkit-color-swatch {
     align-items: center;
     font-size: 12px;
 }
-

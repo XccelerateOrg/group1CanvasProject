@@ -1,29 +1,21 @@
 class GlobalStyle {
     constructor() {
-        // Line Style
-        this._lineThickness = 5;            // ctx.lineWidth = self.globalStyle.lineThickness   // the thickness of lines
-        this._lineEndShape = "round";        // ctx.lineCap = self.globalStyle.lineEndShape      // the shape of ending point on the line "round圓角" "butt短方角" "square長方角"
-        this._lineJoinShape = "round";       // ctx.lineJoin = self.globalStyle.lineJoinShape    // the shape used to join to line "round圓角" "miter尖角" "bevel平角"
-        
-        // Text Style
-        this._fontSize = 10;                 // ctx.font = `${self.globalStyle.fontSize}px ${self.globalStyle.fontStyle}`
-        this._fontStyle = "sans-serif";      // ctx.font = `${self.globalStyle.fontSize}px ${self.globalStyle.fontStyle}`
-        this._textAlignment = "left"        // ctx.textAlign  = self.globalStyle.textAlignment      // "start" "end" "left" "right" "center"
-        this._textBaseline = "alphabetic"    // ctx.textBaseline  = self.globalStyle.textBaseline    // "top", "middle", "bottom", "hanging", "alphabetic", "ideographic"
-
-        // Fill and Stroke Style
-        this._fillColor = "#ffffff";         // ctx.fillStyle = self.globalStyle.fillColor     // shape inside color
-        this._lineColor = "#000000";         // ctx.strokeStyle = self.globalStyle.lineColor   // border color
-        this._opacity = 1;                   // ctx.globalAlpha  = self.globalStyle.opacity    
-
-        // Shodows Style
-        this._shadowColor = null;            // ctx.shadowColor = self.globalSyle.shadowColor
-        this._shadowBlurLevel = 0;           // ctx.shadowBlur = self.globalStyle.shadowBlurLevel
-        this._shadowExpandX = 0;             // ctx.shadowOffsetX = self.globalStyle.shadowExpandX
-        this._shadowExpandY = 0;             // ctx.shadowOffsetY = self.globalStyle.shadowExpandY
+        this._lineThickness = 5; 
+        this._lineEndShape = "round";
+        this._lineJoinShape = "round";
+        this._fontSize = 10;
+        this._fontStyle = "sans-serif";
+        this._textAlignment = "center"
+        this._textBaseline = "alphabetic"
+        this._fillColor = "#ffffff";
+        this._lineColor = "#000000";
+        this._opacity = 1;
+        this._shadowColor = null;
+        this._shadowBlurLevel = 0;
+        this._shadowExpandX = 0;
+        this._shadowExpandY = 0;
     };
     
-    // Text Style Getter and Setter
     get lineThickness() {
         return this._lineThickness;
     }
@@ -45,7 +37,6 @@ class GlobalStyle {
         this._lineJoinShape = value;
     }
 
-    // Text Style Getter and Setter
     get fontSize() {
         return this._fontSize;
     }
@@ -74,7 +65,6 @@ class GlobalStyle {
         this._textBaseline = value;
     }
 
-    // Fill and Stroke Style Getter and Setter
     get fillColor() {
         return this._fillColor;
     };
@@ -96,7 +86,6 @@ class GlobalStyle {
         this._opacity = value;
     }
 
-    // Shodows Style Getter and Setter
     get shadowColor() {
         return this._shadowColor;
     }
