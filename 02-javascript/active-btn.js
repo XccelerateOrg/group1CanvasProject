@@ -10,6 +10,21 @@ let clearReal = function() {
     ctxReal.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
 }
 
+// default color & order
+let defaultColor = function() {
+    // default color
+    $('#color-a').css('background-color', "#fff");
+    $('#color-b').css('background-color', "#000");
+    // default order
+    removeIndex();
+    $('#color-b').addClass('default-index');
+}
+
+// hide textbox
+let hideTextBox = function() {
+    $('.textbox-wrapper').css("display", "none");
+}
+
 
 // feature active, callback
 function activeFeature(theId) {
@@ -55,63 +70,90 @@ function removeDefaultIndex(){
 
 // feature btn,sec 1 - features
 $('#f-1').on('click', function () {
+    removeStyle();
     removeFeature();
+    hideTextBox();
     activeFeature($('#f-1'));
 });
 
 $('#f-2').on('click', function () {
+    removeStyle();
     removeFeature();
+    hideTextBox();
     activeFeature($('#f-2'));
 });
 
 $('#f-3').on('click', function () {
+    removeStyle();
     removeFeature();
+    hideTextBox();
     activeFeature($('#f-3'));
 });
 
 $('#f-4').on('click', function () {
+    removeStyle();
     removeFeature();
+    hideTextBox();
     activeFeature($('#f-4'));
 });
 
 $('#f-5').on('click', function () {
+    removeStyle();
     removeFeature();
+    hideTextBox();
     activeFeature($('#f-5'));
 });
 
 $('#f-6').on('click', function () {
+    removeStyle();
     removeFeature();
+    hideTextBox();
     activeFeature($('#f-6'));
 });
 
 $('#f-7').on('click', function () {
+    removeStyle();
     removeFeature();
+    hideTextBox();
     activeFeature($('#f-7'));
 });
 
+// textbox
 $('#f-8').on('click', function () {
+    removeStyle();
     removeFeature();
     activeFeature($('#f-8'));
+    if ($('#f-8').hasClass('feature-active')) {
+        $('.textbox-wrapper').css("display", "block");
+    }
 });
 
-// feature btn,sec 2 - icon
 $('#f-9').on('click', function () {
+    removeStyle();
     removeFeature();
+    hideTextBox();
     activeFeature($('#f-9'));
 });
 
+// feature btn,sec 2 - icon
 $('#f-10').on('click', function () {
+    removeStyle();
     removeFeature();
+    hideTextBox();
     activeFeature($('#f-10'));
 });
 
 $('#f-11').on('click', function () {
+    removeStyle();
     removeFeature();
+    hideTextBox();
     activeFeature($('#f-11'));
 });
 
 $('#f-12').on('click', function () {
+    removeStyle();
     removeFeature();
+    hideTextBox();
     activeFeature($('#f-12'));
 });
 
@@ -142,68 +184,9 @@ $('#current-box').on('click', function () {
 ///     color on click       ///
 ////////////////////////////////
 
-// color onclick
-// $('#picker-1').on('click', function () {
-    
-//     pick($('#picker-1'));
-// });
-
-
-// $('#picker-2').on('click', function (callback) {
-    
-//     callback($('#picker-2'));
-// });
-
-// $('#picker-3').on('click', function () {
-    
-//     pick($('#picker-3'));
-// });
-
-// $('#picker-4').on('click', function () {
-    
-//     pick($('#picker-4'));
-// });
-
-// $('#picker-5').on('click', function () {
-    
-//     pick($('#picker-5'));
-// });
-
-// $('#picker-6').on('click', function () {
-    
-//     pick($('#picker-6'));
-// });
-
-// $('#picker-7').on('click', function () {
-    
-//     pick($('#picker-7'));
-// });
-
-// $('#picker-8').on('click', function () {
-    
-//     pick($('#picker-8'));
-// });
-
-// // feature btn,sec 2 - icon
-// $('#picker-9').on('click', function () {
-    
-//     pick($('#picker-9'));
-// });
-
-// $('#picker-10').on('click', function () {
-    
-//     pick($('#picker-10'));
-// });
-
-// $('#picker-11').on('click', function () {
-    
-//     pick($('#picker-11'));
-// });
-
-
-
 
 // --------------
+
 
 // style btn - styles
 $('#s-1').on('click', function () {
@@ -226,11 +209,6 @@ $('#s-4').on('click', function () {
     activeStyle($('#s-4'));
 });
 
-$('#s-5').on('click', function () {
-    removeStyle();
-    activeStyle($('#s-5'));
-});
-
 // back to default setting, removehandler on canvas draft
 $('#default').on('click', function () {
     removeFeature();
@@ -238,6 +216,8 @@ $('#default').on('click', function () {
     removeHandler(canvasDraft);
     clearDraft();
     clearReal();
+    defaultColor();
+    hideTextBox();
 });
 
 
