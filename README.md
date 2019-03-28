@@ -1,26 +1,48 @@
-=== Mike's note ===
+# Project Title
 
-### html.index structure
+Canvas Project
 
-1. Feature Section *(sidebar), level from up to down*
-    * feature-wrapper
-    * feature-container
-    * feature-overflow (for scrolling features)
-    * feature-box
-    * **feature-btn** -> *AddEventListener*
+## Objective
 
-2. Canvas *(real & draft)*
-    * canvas real
-    * canvas draft
+This project is created a paint in web browser with Canvas. 
 
-3. Style Section *(bottom)*
-    * style-wrapper
-    * style-container
-    * style-box
-    * **style-btn** -> *AddEventListener*
+## Prerequisites
+
+we need to install below software for develop:
+
+- virtual studio code-design the code
+- git-share the code to teammate
 
 
+End with an example of getting some data out of the system or using it for a little demo
+
+## Function and Feature
+
+In our Canvas, we have 2 types of function-**Drawing** and **Styling**
+
+**Drawing**
+- Free Draw
+- Straight line
+- Curve line
+- Rectangle
+- Circle
+- Star Drawing
+- Polygon
+- Text
+- Eraser
+- Image Draw 1
+- Image Draw 2
+- Image Draw 3
+
+**Styling**
+- Colour Picker
+- Style Picker
+- textbox
 
 
-readme.md reference:
-[Basic writing and formatting syntax](https://help.github.com/en/articles/basic-writing-and-formatting-syntax#styling-text)
+## Deployment
+
+Use surge to publish the web page to internet
+
+
+
