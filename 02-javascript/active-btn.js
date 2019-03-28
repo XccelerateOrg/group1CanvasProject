@@ -248,7 +248,8 @@ $('#default').on('click', function () {
 //canvasReal
 $('#save').on('click', function () {
     removeStyle();
+    clearDraft();
     let canvas = document.getElementById("canvas-real");
-    let data = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+    let data = canvas.toDataURL().replace("image/png", "image/octet-stream");
     window.location.href = data;
 });
