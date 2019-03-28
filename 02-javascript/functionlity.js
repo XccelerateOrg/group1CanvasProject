@@ -369,13 +369,11 @@ class DrawPolygon {
 
 class DrawText {
     constructor() {
-        // this.drawing = false;
         this.string = $('#text_cnv').val().toString();
-        // this.string = 'sdfghg';
         self = this;
     };
     startPosition(e) {
-        // this.drawing = true;
+        this.drawing = true;
     }
     endPosition(e) {
         ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
@@ -387,16 +385,14 @@ class DrawText {
         ctxReal.fillText(self.string, e.offsetX, e.offsetY);
     }
     movePosition(e) {
-        // if (this.drawing === true) {
-            this.string = $('#text_cnv').val().toString();
-            ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
-            ctxDraft.font = `${globalStyle.fontSize}px ${globalStyle.fontStyle}`;
-            ctxDraft.textBaseline = globalStyle.textBaseline;
-            ctxDraft.fillStyle = globalStyle.fillColor;
-            ctxDraft.globalAlpha = globalStyle.opacity;
-            ctxDraft.beginPath();
-            ctxDraft.fillText(self.string, e.offsetX, e.offsetY);
-        // }
+        this.string = $('#text_cnv').val().toString();
+        ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
+        ctxDraft.font = `${globalStyle.fontSize}px ${globalStyle.fontStyle}`;
+        ctxDraft.textBaseline = globalStyle.textBaseline;
+        ctxDraft.fillStyle = globalStyle.fillColor;
+        ctxDraft.globalAlpha = globalStyle.opacity;
+        ctxDraft.beginPath();
+        ctxDraft.fillText(self.string, e.offsetX, e.offsetY);
     }
 }
 
