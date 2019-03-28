@@ -21,7 +21,7 @@ class DrawFreeStyleLine {
         ctxReal.stroke();
     }
     movePosition(e) {
-        if (this.drawing === true) {
+        if (this.drawing === true && e.which === 1) {
             ctxReal.globalAlpha = globalStyle.opacity;
             ctxReal.lineTo(e.offsetX, e.offsetY);
             ctxReal.stroke();
@@ -405,18 +405,20 @@ class DrawText {
     endPosition(e) {
         ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
         ctxReal.beginPath();
-        ctxReal.fillStyle = '#f00';
-        ctxReal.font = 'italic bold 30px sans-serif';
-        ctxReal.textBaseline = 'bottom';
+        ctxReal.fillStyle = globalStyle.fillStyle;
+        ctxReal.fontStyle = globalStyle.fontStyle;
+        ctxReal.fontSize = globalStyle.fontSize;
+        ctxReal.textBaseline = globalStyle.textBaseline;
         ctxReal.fillText( self.string ,  e.offsetX,  e.offsetY);
     }
     movePosition(e) {
         if (this.drawing === true) {
             ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
             ctxDraft.beginPath();
-            ctxDraft.fillStyle = '#f00';
-            ctxDraft.font = 'italic bold 30px sans-serif';
-            ctxDraft.textBaseline = 'bottom';
+            ctxDraft.fillStyle = globalStyle.fillStyle;
+            ctxDraft.fontStyle = globalStyle.fontStyle;
+            ctxDraft.fontSize = globalStyle.fontSize;
+            ctxDraft.textBaseline = globalStyle.textBaseline;
             ctxDraft.fillText( self.string ,  e.offsetX,  e.offsetY);
         }
     }
