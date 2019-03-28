@@ -13,8 +13,11 @@ let clearReal = function() {
 // default color & order
 let defaultColor = function() {
     // default color
-    $('#color-a').css('background-color', "#fff");
-    $('#color-b').css('background-color', "#000");
+    globalStyle.fillColor = "#fff";
+    globalStyle.lineColor = "#000";
+    $('#color-a').css('background-color', globalStyle.fillColor);
+    $('#color-b').css('background-color', globalStyle.lineColor);
+
     // default order
     removeIndex();
     $('#color-b').addClass('default-index');
