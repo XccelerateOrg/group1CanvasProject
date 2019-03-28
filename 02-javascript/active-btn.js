@@ -254,6 +254,7 @@ $('#default').on('click', function () {
     clearReal();
     defaultColor();
     hideTextBox();
+    removeCommand();
 });
 
 
