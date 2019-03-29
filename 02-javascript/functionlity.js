@@ -453,7 +453,8 @@ class DrawingIconOne {
 
     movePosition(e) {
         let image = new Image();
-        image.src = $(`#emoji-1`).attr('src');
+        image.src = './01-assets/img/emoji3.png';
+        image.setAttribute("crossOrigin",'Anonymous');
         self.imgIcon = image;
         ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
         if (altKey === true && this.drawing === true) {
@@ -483,7 +484,8 @@ class DrawingIconTwo {
 
     movePosition(e) {
         let image = new Image();
-        image.src = $(`#emoji-2`).attr('src');
+        image.src = './01-assets/img/emoji4.png';
+        image.setAttribute("crossOrigin",'Anonymous');
         self.imgIcon = image;
         ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
         if (altKey === true && this.drawing === true) {
@@ -512,7 +514,9 @@ class DrawingIconThree {
 
     movePosition(e) {
         let image = new Image();
-        image.src = $(`#emoji-3`).attr('src');
+        image.src = './01-assets/img/slack.png';
+        console.log(image.src);
+        image.setAttribute("crossOrigin",'Anonymous');
         self.imgIcon = image;
         ctxDraft.clearRect(0, 0, canvasDraft[0].width, canvasDraft[0].height);
         if (altKey === true && this.drawing === true) {

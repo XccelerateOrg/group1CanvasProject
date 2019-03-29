@@ -237,6 +237,7 @@ $('#save').on('click', function () {
     removeStyle();
     clearDraft();
     let canvas = document.getElementById("canvas-real");
+    console.log(canvas);
     data = canvas.toDataURL('image/png').replace('image/png','image/octet-stream')
     window.location.href = data;
 });
