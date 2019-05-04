@@ -250,11 +250,13 @@ class DrawStar {
         ctxDraft.lineJoin = globalStyle.lineJoinShape;
         ctxDraft.lineWidth = globalStyle.lineThickness;
         ctxDraft.fillStyle = globalStyle.fillColor;
+        ctxDraft.globalAlpha = globalStyle.opacity;
         ctxReal.strokeStyle = globalStyle.lineColor;
         ctxReal.lineCap = globalStyle.lineEndShape;
         ctxReal.lineJoin = globalStyle.lineJoinShape
         ctxReal.lineWidth = globalStyle.lineThickness;
         ctxReal.fillStyle = globalStyle.fillColor;
+        ctxReal.globalAlpha = globalStyle.opacity;
 
     }
     endPosition(e) {
@@ -335,11 +337,13 @@ class DrawPolygon {
         ctxDraft.lineJoin = globalStyle.lineJoinShape;
         ctxDraft.lineWidth = globalStyle.lineThickness;
         ctxDraft.fillStyle = globalStyle.fillColor;
+        ctxDraft.globalAlpha = globalStyle.opacity;
         ctxReal.strokeStyle = globalStyle.lineColor;
         ctxReal.lineCap = globalStyle.lineEndShape;
         ctxReal.lineJoin = globalStyle.lineJoinShape
         ctxReal.lineWidth = globalStyle.lineThickness;
         ctxReal.fillStyle = globalStyle.fillColor;
+        ctxReal.globalAlpha = globalStyle.opacity;
         if (e.which === 1 && altKey === true) {
             let pointXY = [e.offsetX, e.offsetY];
             self.pointArray.push(pointXY);
